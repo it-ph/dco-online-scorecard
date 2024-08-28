@@ -91,22 +91,26 @@ $dt1 = carbon::now();
                 <div class="col-md-12">
                     <table class="display nowrap table table-bordered dataTable">
                         <tr style="background: #026b4d; color: white">
+                            <td colspan="2">Assessment Rating</td>
                             <td colspan="2">Remarks</td>
                             <td colspan="2">Performance Ranges</td>
                             <td colspan="2">Actual Score</td>
                         </tr>
                         <tr>
                             <td colspan="2">
+                                <input style="width: 200px;" id="quality_self_assessment_rating" name="quality_self_assessment_rating" value="{{$score->quality_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td colspan="2">
                                 <input id="quality_actual_remarks" name="quality_actual_remarks" value="{{$score->quality_actual_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
-                                    <small>
-                                        <span style="font-weight: 500">25%</span> -  95% above Quality average<br>
-                                        <span style="font-weight: 500">20%</span> -  90% to 94.99% above Quality average<br>
-                                        <span style="font-weight: 500">15%</span> -  85% to 89.99% above Quality average<br>
-                                        <span style="font-weight: 500">5%</span> -  8% to 84.99% above Quality average<br>
+                            <small>
+                                        <span style="font-weight: 500">20%</span> -  95% above Quality average<br>
+                                        <span style="font-weight: 500">15%</span> -  90% to 94.99% above Quality average<br>
+                                        <span style="font-weight: 500">10%</span> -  85% to 89.99% above Quality average<br>
+                                        <span style="font-weight: 500">5%</span> -  80% to 84.99% above Quality average<br>
                                         <span style="font-weight: 500">0%</span>  -  79.99% below Quality average</span>
-                                    </small>
+                                    </small>>
                             </td>
                             <td class="ttxt-center lbl-bold">20%</td>
                             <td><input id="quality" autocomplete="off" required name="quality" value="{{$score->quality}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
@@ -114,46 +118,59 @@ $dt1 = carbon::now();
 
                         <tr>
                             <td colspan="2">
+                                <input style="width: 200px;" id="productivity_self_assessment_rating" name="productivity_self_assessment_rating" value="{{$score->productivity_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td colspan="2">
                                 <input style="width: 200px;" id="productivity_actual_remarks" name="productivity_actual_remarks" value="{{$score->productivity_actual_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
-                                    <small>90% Productivity Average</small>
+                                <small>90% Productivity Average</small>
                             </td>
                             <td class="ttxt-center lbl-bold">15%</td>
                             <td><input id="productivity" autocomplete="off" required name="productivity" value="{{$score->productivity}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
 
                         <tr>
-                                <td colspan="2">
-                                    <input id="reliability_actual_remarks" name="reliability_actual_remarks" value="{{$score->reliability_actual_remarks}}" type="text" class="form-control">
-                                </td>
+                            <td colspan="2">
+                                <input id="reliability_self_assessment_rating" name="reliability_self_assessment_rating" value="{{$score->reliability_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td colspan="2">
+                                <input id="reliability_actual_remarks" name="reliability_actual_remarks" value="{{$score->reliability_actual_remarks}}" type="text" class="form-control">
+                            </td>
 
-                                <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic">
-                                    <span>
-                                        <small>
-                                            <span style="font-weight: 500">10.00%</span> -  95% above <br>
-                                            <span style="font-weight: 500">7%</span> -  90% to 94.99% <br>
-                                            <span style="font-weight: 500">5%</span> -  85% to 89.99% <br>
-                                            <span style="font-weight: 500">0%</span>  -  84.99% below 
-                                        </small>
-                                    </span>
-                                </td>
-                                <td class="ttxt-center lbl-bold">10%</td>
-                                <td><input id="reliability"  autocomplete="off" required name="reliability" value="{{$score->reliability}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
-                            </tr>
-
+                            <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
+                                <small>
+                                    <span style="font-weight: 500">10.00%</span> -  95% above <br>
+                                    <span style="font-weight: 500">7%</span> -  90% to 94.99% <br>
+                                    <span style="font-weight: 500">5%</span> -  85% to 89.99% <br>
+                                    <span style="font-weight: 500">0%</span>  -  84.99% below 
+                                </small>
+                            </td>
+                            <td class="ttxt-center lbl-bold">10%</td>
+                            <td><input id="reliability"  autocomplete="off" required name="reliability" value="{{$score->reliability}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
+                        </tr>
                         <tr>
+                            <td colspan="2">
+                                <input id="no_client_escalations_self_assessment_rating" name="no_client_escalations_self_assessment_rating" value="{{$score->no_client_escalations_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="no_client_escalations_actual_remarks" name="no_client_escalations_actual_remarks" value="{{$score->no_client_escalations_actual_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
-                                    <small>No client escalations</small>
+                                    <small>
+                                        <span style="font-weight: 500">0%</span> - With monetary impact <br>
+                                        <span style="font-weight: 500">7.50%</span> - No monetary impact <br>
+                                        <span style="font-weight: 500">15%</span> - No escalation </span>
+                                    </small>
                             </td>
                             <td class="ttxt-center lbl-bold">15%</td>
                             <td class="ttxt-center lbl-bold"><input id="no_client_escalations" autocomplete="off" required name="no_client_escalations" value="{{$score->no_client_escalations}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
 
                         <tr>
+                            <td colspan="2">
+                                <input id="attrition_self_assessment_rating" name="attrition_self_assessment_rating" value="{{$score->attrition_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="attrtion_actual_remarks" name="attrition_actual_remarks" value="{{$score->attrition_actual_remarks}}" type="text" class="form-control">
                             </td>
@@ -163,10 +180,13 @@ $dt1 = carbon::now();
                             <td class="ttxt-center lbl-bold">10%</td>
                             <td class="ttxt-center lbl-bold"><input id="attrition" autocomplete="off" required name="attrition" value="{{$score->attrition}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
-                        
+
                         <tr>
                             <td colspan="2">
-                                <input id="no_pay_dispute_actual_remarks" name="no_pay_dispute_actual_remarks" value="{{$score->no_pay_dispute_actual_remarks}}" type="text" class="form-control">
+                                <input id="no_pay_dispute_self_assessment_rating" name="no_pay_dispute_self_assessment_rating" value="{{$score->no_pay_dispute_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td colspan="2">
+                                <input id="no_pay_dispute_remarks" name="no_pay_dispute_remarks" value="{{$score->no_pay_dispute_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
                                 <small>
@@ -179,7 +199,11 @@ $dt1 = carbon::now();
                             <td class="ttxt-center lbl-bold">5%</td>
                             <td class="ttxt-center lbl-bold"><input id="no_pay_dispute" autocomplete="off" required name="no_pay_dispute" value="{{$score->no_pay_dispute}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
+
                         <tr>
+                            <td colspan="2">
+                                <input id="partnership_self_assessment_rating" name="partnership_self_assessment_rating" value="{{$score->partnership_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="partnership_actual_remarks" name="partnership_actual_remarks" value="{{$score->partnership_actual_remarks}}" type="text" class="form-control">
                             </td>
@@ -192,6 +216,9 @@ $dt1 = carbon::now();
 
                         <tr>
                             <td colspan="2">
+                                <input id="htl_compliance_self_assessment_rating" name="htl_compliance_self_assessment_rating" value="{{$score->htl_compliance_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td colspan="2">
                                 <input id="htl_compliance_actual_remarks" name="htl_compliance_actual_remarks" value="{{$score->htl_compliance_actual_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
@@ -200,7 +227,11 @@ $dt1 = carbon::now();
                             <td class="ttxt-center lbl-bold">5%</td>
                             <td class="ttxt-center lbl-bold"><input id="htl_compliance" autocomplete="off" required name="htl_compliance" value="{{$score->htl_compliance}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
+
                         <tr>
+                            <td colspan="2">
+                                <input id="eod_reporting_self_assessment_rating" name="eod_reporting_self_assessment_rating" value="{{$score->eod_reporting_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="eod_reporting_actual_remarks" name="eod_reporting_actual_remarks" value="{{$score->eod_reporting_actual_remarks}}" type="text" class="form-control">
                             </td>
@@ -210,7 +241,11 @@ $dt1 = carbon::now();
                             <td class="ttxt-center lbl-bold">5%</td>
                             <td class="ttxt-center lbl-bold"><input id="eod_reporting" autocomplete="off" required name="eod_reporting" value="{{$score->eod_reporting}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
+
                         <tr>
+                            <td colspan="2">
+                                <input id="linkedin_learning_compliance_self_assessment_rating" name="linkedin_learning_compliance_self_assessment_rating" value="{{$score->linkedin_learning_compliance_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="linkedin_learning_compliance_actual_remarks" name="linkedin_learning_compliance_actual_remarks" value="{{$score->linkedin_learning_compliance_actual_remarks}}" type="text"  class="form-control">
                             </td>
@@ -220,7 +255,11 @@ $dt1 = carbon::now();
                             <td class="ttxt-center lbl-bold">5%</td>
                             <td class="ttxt-center lbl-bold"><input id="linkedin_learning_compliance" autocomplete="off" required name="linkedin_learning_compliance" value="{{$score->linkedin_learning_compliance}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"></td>
                         </tr>
+
                         <tr>
+                            <td colspan="2">
+                                <input id="other_compliances_required_self_assessment_rating" name="other_compliances_required_self_assessment_rating" value="{{$score->other_compliances_required_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td colspan="2">
                                 <input id="other_compliances_required_actual_remarks" name="other_compliances_required_actual_remarks" value="{{$score->other_compliances_required_actual_remarks}}" type="text" class="form-control">
                             </td>

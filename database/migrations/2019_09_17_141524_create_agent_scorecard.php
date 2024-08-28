@@ -23,18 +23,25 @@ class CreateAgentScorecard extends Migration
 
             $table->string('quality')->nullable();
             $table->string('quality_remarks')->nullable();
+            $table->string('quality_self_assessment_rating')->nullable();
             $table->string('productivity')->nullable();
             $table->string('productivity_remarks')->nullable();
+            $table->string('productivity_self_assessment_rating')->nullable();
             $table->string('reliability')->nullable();
             $table->string('reliability_remarks')->nullable();
+            $table->string('reliability_self_assessment_rating')->nullable();
             $table->string('profit')->nullable();
             $table->string('profit_remarks')->nullable();
+            $table->string('profit_self_assessment_rating')->nullable();
             $table->string('people')->nullable();
             $table->string('people_remarks')->nullable();
+            $table->string('people_self_assessment_rating')->nullable();
             $table->string('partnership')->nullable();
             $table->string('partnership_remarks')->nullable();
+            $table->string('partnership_self_assessment_rating')->nullable();
             $table->string('priority')->nullable();
             $table->string('priority_remarks')->nullable();
+            $table->string('priority_self_assessment_rating')->nullable();
             $table->string('final_score');
             $table->timestamps();
         });

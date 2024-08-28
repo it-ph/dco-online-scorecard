@@ -91,18 +91,23 @@
                     </div>
                 </div><!--row-->
             <div class="row">
-
+                        
                 <div class="col-md-12">
                     <table class="display nowrap table table-bordered dataTable">
                         <tr style="background: #026b4d; color: white">
-<!--                             <td>Remarks</td> -->
+                            <td style="font-weight: 400;">Assessment Rating</td>
+                            <td style="font-weight: 400">Remarks</td>
                             <td style="font-weight: 400">Metrics</td>
                             <td style="font-weight: 400">Actual Score</td>
                             <td style="font-weight: 400">Weightage</td>
                         </tr>
                         <tr>
-                            <td><span style="font-weight: bold; "> QUALITY (OVER-ALL) <small>@if($quality) {{$quality->value}} @else {{ 0 }} @endif%</small></span>   </td>
-                            <td><input id="actual_quality" required name="actual_quality" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td>
+                                <input id="quality_self_assessment_rating" name="quality_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="quality_remarks" name="quality_remarks" type="text"  class="form-control"></td>
+                            <td ><span style="font-weight: bold;"> QUALITY (OVER-ALL) <small>@if($quality) {{$quality->value}} @else {{ 0 }} @endif%</small></span>   </td>
+                            <td><input id="actual_quality" required name="actual_quality" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="q" value="@if($quality) {{$quality->value}} @else {{ 0 }} @endif" type="hidden" class="form-control" placeholder="%">
                                 {{-- <input id="quality" required name="quality" value="0" type="text" class="form-control"> --}}
@@ -114,8 +119,12 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="productivity_self_assessment_rating" name="productivity_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="productivity_remarks" name="productivity_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold; "> PRODUCTIVITY <small>@if($productivity) {{$productivity->value}} @else {{ 0 }} @endif%</small></span>   </td>
-                            <td><input id="actual_productivity" required name="actual_productivity" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_productivity" required name="actual_productivity" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="p" value="@if($productivity) {{$productivity->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="productivity" required name="productivity" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -127,9 +136,19 @@
                         </tr>
 
                         <tr>
-                            <td><span style="font-weight: bold;"> RELIABILITY <small>@if($reliability) {{$reliability->value}} @else {{ 0 }} @endif%</small><br>
-                                    <small> (Absenteeism, Tardiness, Overbreak, Undertime)</small></span>   </td>
-                            <td><input id="actual_reliability" required name="actual_reliability" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td>
+                                <input id="reliability_self_assessment_rating" name="reliability_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="reliability_remarks" name="reliability_remarks" type="text"  class="form-control"></td>
+                            <td>
+                                <span style="font-weight: bold;"> RELIABILITY <small>@if($reliability) {{$reliability->value}} @else {{ 0 }} @endif%</small><br>
+                                    <small> (Absenteeism</small><br>
+                                    <small> Tardiness</small><br>
+                                    <small> Overbreak</small><br>
+                                    <small> Undertime)</small>
+                                </span>   
+                            </td>
+                            <td><input id="actual_reliability" required name="actual_reliability" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="r" value="@if($reliability) {{$reliability->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="reliability" required name="reliability" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -141,23 +160,32 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="profit_self_assessment_rating" name="profit_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="profit_remarks" name="profit_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold;"> PROFIT <small>@if($profit) {{$profit->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> </small></span>   </td>
-                            <td><input id="actual_profit" required name="actual_profit" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_profit" required name="actual_profit" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
-                                <input id="pt" value="@if($profit) {{$profit->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
-                                {{-- <input id="profit" required name="profit" value="0" type="text" class="form-control" placeholder="%"> --}}
-                                <div style="border: 1px solid #D9D9D9; border-radius:4px; padding: 4px;">
-                                    <span style="font-size: 16px; text-align: center;" id="profit">0.00 </span>
-                                    <input type="hidden" name="profit" id="pt_val" value="0.00">
+                                <div style="border: 1px solid #D9D9D9; border-radius:4px; padding: 5px;">
+                                    <input id="pt" value="@if($profit) {{$profit->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
+                                    {{-- <input id="profit" required name="profit" value="{{$score->profit}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"> --}}
+                                    <span style="font-size: 16px; text-align: center;" id="profit">{{$score->profit}} </span>
+                                    <input type="hidden" name="profit" id="pt_val" value="{{$score->profit}}">
+                                </div>
                                 </div>
                             </td>
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="engagement_self_assessment_rating" name="engagement_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="engagement_remarks" name="engagement_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold;"> ENGAGEMENT <small>@if($engagement) {{$engagement->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> </small></span>   </td>
-                            <td><input id="actual_engagement" required name="actual_engagement" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_engagement" required name="actual_engagement" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="e" value="@if($engagement) {{$engagement->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="engagement" required name="engagement" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -169,9 +197,13 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="behavior_self_assessment_rating" name="behavior_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="behavior_remarks" name="behavior_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold;"> BEHAVIOR <small>@if($behavior) {{$behavior->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> </small></span>   </td>
-                            <td><input id="actual_behavior" required name="actual_behavior" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_behavior" required name="actual_behavior" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="b" value="@if($behavior) {{$behavior->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="behavior" required name="behavior" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -183,9 +215,13 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="partnership_self_assessment_rating" name="partnership_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="partnership_remarks" name="partnership_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold;"> PARTNERSHIP <small>@if($partnership) {{$partnership->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> </small></span>   </td>
-                            <td><input id="actual_partnership" required name="actual_partnership" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_partnership" required name="actual_partnership" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="ps" value="@if($partnership) {{$partnership->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="partnership" required name="partnership" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -197,9 +233,13 @@
                         </tr>
 
                         <tr>
+                            <td>
+                                <input id="priority_self_assessment_rating" name="priority_self_assessment_rating" type="text" class="form-control">
+                            </td>
+                            <td ><input id="priority_remarks" name="priority_remarks" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold;"> PRIORITY <small>@if($priority) {{$priority->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> </small></span>   </td>
-                            <td><input id="actual_priority" required name="actual_priority" value="0" type="text" class="form-control" placeholder="%" onkeyup="addModalsumTotalScore()"></td>
+                            <td><input id="actual_priority" required name="actual_priority" value="0" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
                             <td>
                                 <input id="py" value="@if($priority) {{$priority->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
                                 {{-- <input id="priority" required name="priority" value="0" type="text" class="form-control" placeholder="%"> --}}
@@ -227,9 +267,10 @@
       </div>
 @endsection
 
+@section('js')
 <script nonce="{{csp_nonce()}}">
 
-function addModalsumTotalScore() {
+function sumTotalScore() {
         let q = parseFloat($("#q").val()) || 0;
         let p = parseFloat($("#p").val()) || 0;
         let r = parseFloat($("#r").val()) || 0;
@@ -252,9 +293,9 @@ function addModalsumTotalScore() {
         let productivity = (p / 100) * actual_productivity;
         let reliability = (r / 100) * actual_reliability;
         let profit = (pt / 10) * actual_profit;
-        let engagement = (e / 10) * actual_engagement;
+        let engagement = (e / 15) * actual_engagement;
         let behavior = (b / 10) * actual_behavior;
-        let partnership = (ps / 10) * actual_partnership * 2;
+        let partnership = (ps / 5) * actual_partnership;
         let priority = (py / 10) * actual_priority;
 
         quality = isNaN(quality) ? 0 : quality;
@@ -300,4 +341,7 @@ function addModalsumTotalScore() {
     }
 
 </script>
+@endsection
+
+
 

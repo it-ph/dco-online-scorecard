@@ -105,8 +105,10 @@ class ScoreController extends Controller
         $tls = User::where('role','supervisor')->orderBy('name','ASC')->get();
         $scores = TLScoreCard::select('id','tl_id','month',
                                     'target','actual_remarks','quality','productivity','partnership','no_client_escalations','attrition',
-                                    'quality_actual_remarks', 'productivity_actual_remarks','reliability_actual_remarks','no_client_escalations_actual_remarks','partnership_actual_remarks','attrition_actual_remarks',
+                                    'quality_actual_remarks', 'productivity_actual_remarks','reliability_actual_remarks','no_pay_dispute_remarks','no_client_escalations_actual_remarks','partnership_actual_remarks','attrition_actual_remarks',
+                                    'quality_self_assessment_rating', 'productivity_self_assessment_rating','reliability_self_assessment_rating','no_client_escalations_self_assessment_rating','partnership_self_assessment_rating','attrition_self_assessment_rating',
                                     'no_pay_dispute_actual_remarks','linkedin_learning_compliance_actual_remarks','eod_reporting_actual_remarks','htl_compliance_actual_remarks',
+                                    'no_pay_dispute_self_assessment_rating','linkedin_learning_compliance_self_assessment_rating','eod_reporting_self_assessment_rating','htl_compliance_self_assessment_rating','other_compliances_required_self_assessment_rating',
                                     'no_pay_dispute','linkedin_learning_compliance','eod_reporting','htl_compliance','other_compliances_required','reliability',
                                     'final_score','acknowledge','acknowledge_by_tl','date_acknowledge_by_tl','tl_signature_id',
                                     'acknowledge_by_manager','date_acknowledge_by_manager','manager_signature_id','new_manager_id','acknowledge_by_towerhead','date_acknowledge_by_towerhead',
@@ -141,8 +143,10 @@ class ScoreController extends Controller
 
         $avail_months = TLScoreCard::month()->select('id','tl_id','month',
                                     'target','actual_remarks','quality','productivity','partnership','no_client_escalations','attrition',
-                                    'quality_actual_remarks', 'productivity_actual_remarks','reliability_actual_remarks','no_client_escalations_actual_remarks','partnership_actual_remarks','attrition_actual_remarks',
+                                    'quality_actual_remarks', 'productivity_actual_remarks','reliability_actual_remarks','no_pay_dispute_remarks','no_client_escalations_actual_remarks','partnership_actual_remarks','attrition_actual_remarks',
                                     'no_pay_dispute_actual_remarks','linkedin_learning_compliance_actual_remarks','eod_reporting_actual_remarks','htl_compliance_actual_remarks',
+                                    'quality_self_assessment_rating', 'productivity_self_assessment_rating','reliability_self_assessment_rating','no_client_escalations_self_assessment_rating','partnership_self_assessment_rating','attrition_self_assessment_rating',
+                                    'no_pay_dispute_self_assessment_rating','linkedin_learning_compliance_self_assessment_rating','eod_reporting_self_assessment_rating','htl_compliance_self_assessment_rating','other_compliances_required_self_assessment_rating',
                                     'no_pay_dispute','linkedin_learning_compliance','eod_reporting','htl_compliance','other_compliances_required','reliability',
                                     'final_score','acknowledge','acknowledge_by_tl','date_acknowledge_by_tl','tl_signature_id',
                                     'acknowledge_by_manager','date_acknowledge_by_manager','manager_signature_id','new_manager_id','acknowledge_by_towerhead','date_acknowledge_by_towerhead',
@@ -368,6 +372,7 @@ class ScoreController extends Controller
         $agents = User::where('role','agent')->orderBy('name','ASC')->get();
         $scores = agentScoreCard::select('id','agent_id','month_type','month',
                                     'target', 'actual_remarks', 'actual_quality','quality_actual_remarks','actual_productivity','productivity_actual_remarks','actual_reliability','reliability_actual_remarks','actual_profit','profit_actual_remarks','actual_engagement','engagement_actual_remarks','actual_behavior','behavior_actual_remarks','actual_partnership','partnership_actual_remarks','actual_priority','priority_actual_remarks',
+                                    'quality_self_assessment_rating', 'productivity_self_assessment_rating','reliability_self_assessment_rating', 'profit_self_assessment_rating','engagement_self_assessment_rating','behavior_self_assessment_rating','partnership_self_assessment_rating','priority_self_assessment_rating',
                                     'remarks','quality','quality_remarks','productivity','productivity_remarks','reliability','reliability_remarks','profit','profit_remarks','engagement','engagement_remarks','behavior','behavior_remarks','partnership','partnership_remarks','priority','priority_remarks','final_score','acknowledge','acknowledge_by_agent',
                                     'agent_signature_id','date_acknowledge_by_agent','acknowledge_by_tl','tl_signature_id','new_tl_id',
                                     'date_acknowledge_by_tl','acknowledge_by_manager','manager_signature_id','new_manager_id','date_acknowledge_by_manager',
@@ -431,7 +436,7 @@ class ScoreController extends Controller
         }
 
         $avail_months = agentScoreCard::month()->select('id','agent_id','month_type','month',
-                                                'target', 'actual_remarks','actual_quality','quality_actual_remarks','actual_productivity','productivity_actual_remarks','actual_reliability','reliability_actual_remarks','actual_profit','profit_actual_remarks','actual_engagement','engagement_actual_remarks','actual_behavior','behavior_actual_remarks','actual_partnership','partnership_actual_remarks','actual_priority','priority_actual_remarks',
+                                                'target', 'actual_remarks','actual_quality','quality_actual_remarks','quality_self_assessment_rating','actual_productivity','productivity_actual_remarks','productivity_self_assessment_rating','actual_reliability','reliability_actual_remarks','reliability_self_assessment_rating','actual_profit','profit_actual_remarks','profit_self_assessment_rating','actual_engagement','engagement_actual_remarks','engagement_self_assessment_rating','actual_behavior','behavior_actual_remarks','behavior_self_assessment_rating','actual_partnership','partnership_actual_remarks','partnership_self_assessment_rating','actual_priority','priority_actual_remarks','priority_self_assessment_rating',
                                                 'remarks','quality','quality_remarks','productivity','productivity_remarks','reliability','reliability_remarks','profit','profit_remarks','people','people_remarks','partnership','partnership_remarks','priority','priority_remarks','final_score','acknowledge','acknowledge_by_agent',
                                                 'agent_signature_id','date_acknowledge_by_agent','acknowledge_by_tl','tl_signature_id','new_tl_id',
                                                 'date_acknowledge_by_tl','acknowledge_by_manager','manager_signature_id','new_manager_id','date_acknowledge_by_manager',
@@ -466,20 +471,29 @@ class ScoreController extends Controller
 
         $quality = Setting::where('setting','quality')->first();
         $quality_remarks = Setting::where('setting', 'quality_remarks')->first();
+        $quality_self_assessment_rating = Setting::where('setting', 'quality_self_assessment_rating')->first();
         $productivity = Setting::where('setting','productivity')->first();
         $productivity_remarks = Setting::where('setting', 'productivity_remarks')->first();
+        $productivity_self_assessment_rating = Setting::where('setting', 'productivity_self_assessment_rating')->first();
         $reliability = Setting::where('setting','reliability')->first();
         $reliability_remarks = Setting::where('setting', 'reliability_remarks')->first();
+        $reliability_self_assessment_rating = Setting::where('setting', 'reliability_self_assessment_rating')->first();
+        
         $profit = Setting::where('setting','profit')->first();
         $profit_remarks = Setting::where('setting', 'profit_remarks')->first();
+        $profit_self_assessment_rating = Setting::where('setting', 'profit_self_assessment_rating')->first();
         $engagement = Setting::where('setting','engagement')->first();
         $engagement_remarks = Setting::where('setting', 'engagement_remarks')->first();
+        $engagement_self_assessment_rating = Setting::where('setting', 'engagement_self_assessment_rating')->first();
         $behavior = Setting::where('setting','behavior')->first();
         $behavior_remarks = Setting::where('setting', 'behavior_remarks')->first();
+        $behavior_self_assessment_rating = Setting::where('setting', 'behavior_self_assessment_rating')->first();
         $partnership = Setting::where('setting','partnership')->first();
         $partnership_remarks = Setting::where('setting', 'partnership_remarks')->first();
+        $partnership_self_assessment_rating = Setting::where('setting', 'partnership_self_assessment_rating')->first();
         $priority = Setting::where('setting','priority')->first();
         $priority_remarks = Setting::where('setting', 'priority_remarks')->first();
+        $priority_self_assessment_rating = Setting::where('setting', 'priority_self_assessment_rating')->first();
 
         return view('scores.agents.list',compact('agents','scores','avail_months','target','remarks','quality','quality_remarks','productivity','productivity_remarks','reliability','reliability_remarks','profit','profit_remarks','engagement','engagement_remarks','behavior','behavior_remarks','partnership','partnership_remarks','priority','priority_remarks'));
     }
@@ -533,20 +547,28 @@ class ScoreController extends Controller
 
                 'actual_productivity' => $request['actual_productivity'],
                 'productivity_actual_remarks' => $request['productivity_actual_remarks'],
+                'productivity_self_assessment_rating' => $request['productivity_self_assessment_rating'],
                 'actual_quality' => $request['actual_quality'],
                 'quality_actual_remarks' => $request['quality_actual_remarks'],
+                'quality_self_assessment_rating' => $request['quality_self_assessment_rating'],
                 'actual_reliability' => $request['actual_reliability'],
                 'reliability_actual_remarks' => $request['reliability_actual_remarks'],
+                'reliability_self_assessment_rating' => $request['reliability_self_assessment_rating'],
                 'actual_profit' => $request['actual_profit'],
                 'profit_actual_remarks' => $request['profit_actual_remarks'],
+                'profit_self_assessment_rating' => $request['profit_self_assessment_rating'],
                 'actual_engagement' => $request['actual_engagement'],
-                'actual_behavior' => $request['actual_behavior'],
                 'engagement_actual_remarks' => $request['engagement_actual_remarks'],
+                'engagement_self_assessment_rating' => $request['engagement_self_assessment_rating'],
+                'actual_behavior' => $request['actual_behavior'],
                 'behavior_actual_remarks' => $request['behavior_actual_remarks'],
+                'behavior_self_assessment_rating' => $request['behavior_self_assessment_rating'],
                 'actual_partnership' => $request['actual_partnership'],
                 'partnership_actual_remarks' => $request['partnership_actual_remarks'],
+                'partnership_self_assessment_rating' => $request['partnership_self_assessment_rating'],
                 'actual_priority' => $request['actual_priority'],
                 'priority_actual_remarks' => $request['priority_actual_remarks'],
+                'priority_self_assessment_rating' => $request['priority_self_assessment_rating'],
 
                 'remarks' => $request['remarks'],
 
@@ -591,22 +613,30 @@ class ScoreController extends Controller
 
         $quality = Setting::where('setting','quality')->first();
         $quality_remarks = Setting::where('setting','quality_remarks')->first();
+        $quality_self_assessment_rating = Setting::where('setting','quality_self_assessment_rating')->first();
         $productivity = Setting::where('setting','productivity')->first();
         $productivity_remarks = Setting::where('setting','productivity_remarks')->first();
+        $productivity_self_assessment_rating = Setting::where('setting','productivity_self_assessment_rating')->first();
         $reliability = Setting::where('setting','reliability')->first();
         $reliability_remarks = Setting::where('setting','reliability_remarks')->first();
+        $reliability_self_assessment_rating = Setting::where('setting','reliability_self_assessment_rating')->first();
         $profit = Setting::where('setting','profit')->first();
         $profit_remarks = Setting::where('setting','profit_remarks')->first();
+        $profit_self_assessment_rating = Setting::where('setting','profit_self_assessment_rating')->first();
         $engagement = Setting::where('setting','engagement')->first();
         $engagement_remarks = Setting::where('setting','engagement_remarks')->first();
+        $engagement_self_assessment_rating = Setting::where('setting','engagement_self_assessment_rating')->first();
         $behavior = Setting::where('setting','behavior')->first();
         $behavior_remarks = Setting::where('setting','behavior_remarks')->first();
+        $behavior_self_assessment_rating = Setting::where('setting','behavior_self_assessment_rating')->first();
         $partnership = Setting::where('setting','partnership')->first();
         $partnership_remarks = Setting::where('setting','partnership_remarks')->first();
+        $partnership_self_assessment_rating = Setting::where('setting','partnership_self_assessment_rating')->first();
         $priority = Setting::where('setting','priority')->first();
-        $priority_remarks = Setting::where('setting','priority_remarks')->first();
+        $priority_remarks = Setting::where('setting','priority_remarks')->first(); 
+        $priority_self_assessment_rating = Setting::where('setting','priority_self_assessment_rating')->first(); 
 
-        return view('scores.agents.edit',compact('agents','score','target','remarks','quality','quality_remarks','productivity','productivity_remarks','reliability','reliability_remarks', 'profit','profit_remarks','engagement','engagement_remarks','behavior','behavior_remarks','partnership','partnership_remarks','priority','priority_remarks'));
+        return view('scores.agents.edit',compact('agents','score','target','remarks','quality','quality_remarks','quality_self_assessment_rating','productivity','productivity_remarks','productivity_self_assessment_rating','reliability','reliability_remarks','reliability_self_assessment_rating', 'profit','profit_remarks','profit_self_assessment_rating','engagement','engagement_remarks','engagement_self_assessment_rating','behavior','behavior_remarks','behavior_self_assessment_rating','partnership','partnership_remarks','partnership_self_assessment_rating','priority','priority_remarks','priority_self_assessment_rating'));
     }
 
     public function updateAgentScore(Request $request, $id)
@@ -663,20 +693,28 @@ class ScoreController extends Controller
 
         $productivity = Setting::where('setting','productivity')->first();
         $productivity_remarks = Setting::where('setting','productivity_remarks')->first();
+        $productivity_self_assessment_rating = Setting::where('setting','productivity_self_assessment_rating')->first();
         $quality = Setting::where('setting','quality')->first();
         $quality_remarks = Setting::where('setting','quality_remarks')->first();
+        $quality_self_assessment_rating = Setting::where('setting','quality_self_assessment_rating')->first();
         $reliability = Setting::where('setting','reliability')->first();
         $reliability_remarks = Setting::where('setting','reliability_remarks')->first();
+        $reliability_self_assessment_rating = Setting::where('setting','reliability_self_assessment_rating')->first();
         $profit = Setting::where('setting','profit')->first();
         $profit_remarks = Setting::where('setting','profit_remarks')->first();
+        $profit_self_assessment_rating = Setting::where('setting','profit_self_assessment_rating')->first();
         $engagement = Setting::where('setting','engagement')->first();
         $engagement_remarks = Setting::where('setting','engagement_remarks')->first();
+        $engagement_self_assessment_rating = Setting::where('setting','engagement_self_assessment_rating')->first();
         $behavior = Setting::where('setting','behavior')->first();
         $behavior_remarks = Setting::where('setting','behavior_remarks')->first();
+        $behavior_self_assessment_rating = Setting::where('setting','behavior_self_assessment_rating')->first();
         $partnership = Setting::where('setting','partnership')->first();
         $partnership_remarks = Setting::where('setting','partnership_remarks')->first();
+        $partnership_self_assessment_rating = Setting::where('setting','partnership_self_assessment_rating')->first();
         $priority = Setting::where('setting','priority')->first();
         $priority_remarks = Setting::where('setting','priority_remarks')->first();
+        $priority_self_assessment_rating = Setting::where('setting','priority_self_assessment_rating')->first();
 
         //check if Not admin or not his/her scorecard
         if(!Auth::user()->isAdmin() && !Auth::user()->isCBAOrTowerHead() && !Auth::user()->isSupervisor() && !Auth::user()->isManager() && Auth::user()->id <> $score->agent_id)
@@ -685,7 +723,7 @@ class ScoreController extends Controller
         }
 
 
-      return view('scores.agents.score_card',compact('score','towerhead','remarks','productivity','productivity_remarks','quality','quality_remarks','reliability','reliability_remarks','profit','profit_remarks','engagement','engagement_remarks','behavior','behavior_remarks','partnership','partnership_remarks','priority','priority_remarks'));
+      return view('scores.agents.score_card',compact('score','towerhead','remarks','productivity','productivity_remarks','productivity_self_assessment_rating','quality','quality_remarks','quality_self_assessment_rating','reliability','reliability_remarks','reliability_self_assessment_rating','profit','profit_remarks','profit_self_assessment_rating','engagement','engagement_remarks','engagement_self_assessment_rating','behavior','behavior_remarks','behavior_self_assessment_rating','partnership','partnership_remarks','partnership_self_assessment_rating','priority','priority_remarks','priority_self_assessment_rating'));
     }
 
     public function printAgentScore($id)

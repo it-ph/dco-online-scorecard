@@ -178,14 +178,22 @@
                             // $score_quality = $score->quality;
                             // $score_remarks = $score->actual_remarks;
                             $score_quality_remarks = $score->quality_remarks;
+                            $score_quality_self_assessment_rating = $score->quality_self_assessment_rating;
                             $score_productivity_remarks = $score->productivity_remarks;
+                            $score_productivity_self_assessment_rating = $score->productivity_self_assessment_rating;
                             $score_profit_remarks = $score->profit_remarks;
+                            $score_profit_self_assessment_rating = $score->profit_self_assessment_rating;
                         //    $score_people_remarks = $score->people_remarks;
                             $score_engagement_remarks = $score->engagement_remarks;
+                            $score_engagement_self_assessment_rating = $score->engagement_self_assessment_rating;
                             $score_behavior_remarks = $score->behavior_remarks;
+                            $score_behavior_self_assessment_rating = $score->behavior_self_assessment_rating;
                             $score_partnership_remarks = $score->partnership_remarks;
+                            $score_partnership_self_assessment_rating = $score->partnership_self_assessment_rating;
                             $score_priority_remarks = $score->priority_remarks;
+                            $score_priority_self_assessment_rating = $score->priority_self_assessment_rating;
                             $score_reliability_remarks = $score->reliability_remarks;
+                            $score_reliability_self_assessment_rating = $score->reliability_self_assessment_rating;
 
                             $score_quality = getAgentQualityScore($score->actual_quality); //implement new quality performance range july 20, 2022
                             $score_productivity = $score->productivity;
@@ -240,10 +248,10 @@
                         <td>TARGET/PERFORMANCE RANGE</td>
                         <td>SELF ASSESSMENT RATING</td>
                         <td>EMPLOYEE REMARKS</td>
-                        <td>METRICS</td>
+<!--                         <td>METRICS</td>
                         <td>WEIGHT</td>
                         <td>TARGET</td>
-                        <td>PERFORMANCE RANGES</td>
+                        <td>PERFORMANCE RANGES</td> -->
                         <td>ACTUAL SCORE</td>
                         <td>SCORE</td>
                     </tr>
@@ -261,11 +269,11 @@
                             <span style="font-weight: 500">5%</span> -  80% to 84.99% Quality average <br>
                             <span style="font-weight: 500">0%</span>  -  79.99% below Quality average </span>
                         </td>
-                        <td class="ttxt-center lbl-bold">25.00%</td>
-                        <td>{{$score_quality_remarks}}</td>
+                        <td class="ttxt-center">{{$score_quality_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_quality_remarks}}</td>
                         <!--end 1st column-->
 
-                        <td style="width: 200px" class="lbl-bold ttxt-center">QUALITY <br> (OVER-ALL)</td>
+<!--                         <td style="width: 200px" class="lbl-bold ttxt-center">QUALITY <br> (OVER-ALL)</td>
                         <td class="ttxt-center">@if($quality) {{$quality->value}} @else {{ 0 }} @endif%</td>
                         <td class="ttxt-center"><span>95% <br>Quality <br>Monthly Average</span> </td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
@@ -274,7 +282,7 @@
                             <span style="font-weight: 500">15%</span> -  85% to 89.99% Quality average <br>
                             <span style="font-weight: 500">5%</span> -  80% to 84.99% Quality average <br>
                             <span style="font-weight: 500">0%</span>  -  79.99% below Quality average </span>
-                        </td>
+                        </td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_quality,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_quality}}%</td>
                     </tr>
@@ -285,14 +293,14 @@
                         <td class="ttxt-center">Individual Productivity Performance Output</td>
                         <td class="ttxt-center">12.50%</td>
                         <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td>
-                        <td class="ttxt-center lbl-bold">12.50%</td>
-                        <td>{{$score_productivity_remarks}}</td>
+                        <td class="ttxt-center">{{$score_productivity_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_productivity_remarks}}</td>
                         <!--end 2nd column-->
 
-                        <td style="width: 200px" class="lbl-bold ttxt-center">PRODUCTIVITY</td>
+<!--                         <td style="width: 200px" class="lbl-bold ttxt-center">PRODUCTIVITY</td>
                         <td class="ttxt-center">@if($productivity) {{$productivity->value}} @else {{ 0 }} @endif%</td>
                         <td class="ttxt-center"><span>90% <br>Productivity <br> Average</span> </td>
-                        <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td>
+                        <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td> -->
 <!--                         <td style="text-align: center; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
                             <span style="font-weight: 500">N/A</span>
                             {{-- <span style="font-weight: 500">40%</span> - >=100% productivity average<br>
@@ -317,11 +325,11 @@
                             <span style="font-weight: 500">2%</span> -  80% to 84% Reliability <br>
                             <span style="font-weight: 500">0%</span>  -  < 80% Reliability </span>
                         </td>
-                        <td class="ttxt-center lbl-bold">12.50%</td>
-                        <td>{{$score_reliability_remarks}}</td>
+                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_reliability_remarks}}</td>
                         <!--end 3rd column-->
 
-                        <td style="width: 200px" class="lbl-bold ttxt-center">RELIABILITY <br> <span style="font-weight: normal">(Absenteeism, Tardiness, Overbreak, Undertime)</span></td>
+<!--                         <td style="width: 200px" class="lbl-bold ttxt-center">RELIABILITY <br> <span style="font-weight: normal">(Absenteeism, Tardiness, Overbreak, Undertime)</span></td>
                         <td class="ttxt-center">@if($reliability) {{$reliability->value}} @else {{ 0 }} @endif%</td>
                         <td class="ttxt-center"><span>95% <br>Over-all <br> Reliability</span> </td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
@@ -330,7 +338,7 @@
                             <span style="font-weight: 500">5%</span> -  85% to 89% Reliability <br>
                             <span style="font-weight: 500">2%</span> -  80% to 84% Reliability <br>
                             <span style="font-weight: 500">0%</span>  -  < 80% Reliability </span>
-                        </td>
+                        </td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_reliability,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_reliability}}%</td>
                     </tr>
@@ -345,15 +353,15 @@
                             <span style="font-weight: 500">10%</span> - No client escalation<br>
                             <span style="font-weight: 500">0%</span> - With Escalation<br>
                         </td>
-                        <td class="ttxt-center lbl-bold">10.00%</td>
-                        <td>{{$score_profit_remarks}}</td>
-                        <td colspan=""></td>
+                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_profit_remarks}}</td>
+<!--                         <td colspan=""></td>
                         <td class="ttxt-center">@if($profit) {{$profit->value}} @else {{ 0 }} @endif%</td>
                         <td></td>
                         <td style="text-align: center;  width: 350px;  font-style: italic">
                             <span style="font-weight: 500">10%</span> - No client escalation<br>
                             <span style="font-weight: 500">0%</span> - With Escalation<br>
-                        </td>
+                        </td> -->
                         <!--end 4th column-->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_profit,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_profit}}%</td>
@@ -366,12 +374,12 @@
                         <td class="ttxt-center">Client, Tower and Personiv Engagement Attendance</td>
                         <td class="ttxt-center">15.00%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td>
-                        <td class="ttxt-center lbl-bold">15.00%</td>
-                        <td>{{$score_engagement_remarks}}</td>
-                        <td></td>
+                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_engagement_remarks}}</td>
+<!--                         <td></td>
                         <td class="ttxt-center">@if($engagement) {{$engagement->value}} @else {{ 0 }} @endif%</td>
                         <td></td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td>
+                        <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_engagement,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_engagement}}%</td>
                         <!--end 5th column-->
@@ -385,16 +393,16 @@
                             <span style="font-weight: 500">5%</span> - Coaching Log <br>
                             <span style="font-weight: 500">0%</span> - NTE <br>
                         </td>
-                        <td class="ttxt-center lbl-bold">10.00%</td>
-                        <td>{{$score_behavior_remarks}}</td>
-                        <td></td>
+                        <td class="ttxt-center">{{$score_behavior_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_behavior_remarks}}</td>
+<!--                         <td></td>
                         <td class="ttxt-center">@if($score_behavior) {{$behavior->value}} @else {{ 0 }} @endif%</td>
                         <td></td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span style="font-weight: 500">10%</span> - No NTE or Coaching Log<br>
                             <span style="font-weight: 500">5%</span> - Coaching Log <br>
                             <span style="font-weight: 500">0%</span> - NTE <br>
-                        </td>
+                        </td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_behavior,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_behavior}}%</td>
                     </tr>
@@ -408,14 +416,14 @@
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span>All or nothing</span>
                         </td>
-                        <td class="ttxt-center lbl-bold">5.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">{{$score_partnership_remarks}}</td>
-                        <td></td>
+                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_partnership_remarks}}</td>
+<!--                         <td></td>
                         <td class="ttxt-center">@if($partnership) {{$partnership->value}} @else {{ 0 }} @endif%</td>
                         <td></td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span>All or nothing</span>
-                        </td>
+                        </td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_partnership,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_partnership}}%</td>
                         <!--end 5th column-->
@@ -433,9 +441,9 @@
                             <span style="font-weight: 500"></span> Surveys  <br>
                             <span style="font-weight: 500"></span> etc  <br>
                         </td>
-                        <td class="ttxt-center lbl-bold">10.00%</td>
-                        <td>{{$score_priority_remarks}}</td>
-                        <td></td>
+                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_priority_remarks}}</td>
+<!--                         <td></td>
                         <td class="ttxt-center">@if($priority) {{$priority->value}} @else {{ 0 }} @endif%</td>
                         <td></td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
@@ -443,7 +451,7 @@
                             <span style="font-weight: 500"></span> BCP Kit Testing  <br>
                             <span style="font-weight: 500"></span> Surveys  <br>
                             <span style="font-weight: 500"></span> etc  <br>
-                        </td>
+                        </td> -->
                         <td class="ttxt-center lbl-bold">{{number_format($score->actual_priority,2)}}%</td>
                         <td class="ttxt-center lbl-bold">{{$score_priority}}%</td>
                         <!--end 5th column-->
@@ -452,7 +460,7 @@
                     <tr>
                         <td colspan="3" class="ttxt-center lbl-bold">Average</td>
                         <td class="ttxt-center lbl-bold">100%</td>
-                        <td colspan="7"></td>
+                        <td colspan="3"></td>
                         <td class="ttxt-center lbl-bold">TOTAL SCORE</td>
                         <?php $total_score = $score_quality + $score_productivity + $score_reliability + $score_profit + $score_engagement + $score_behavior + $score_partnership + $score_priority; ?>
                         <td class="ttxt-center lbl-bold" style="font-size: 20px">{{$total_score}}%</td>
