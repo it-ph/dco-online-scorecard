@@ -290,8 +290,7 @@
                         <td class="ttxt-center">10.00%</td>
                         <td style="text-align: center;  width: 350px;  font-style: italic">
                             <span style="font-weight: 500">10%</span> - No client escalation<br>
-                            <span style="font-weight: 500">5%</span> - without monetary impact<br>
-                            <span style="font-weight: 500">10%</span> - With monetary impact<br>
+                            <span style="font-weight: 500">0%</span> - With Escalation<br>
                         </td>
                         <td class="ttxt-center">{{$score_profit_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_profit_remarks}}</td>
