@@ -230,7 +230,7 @@
                     $other_compliances_required_self_assessment_rating = $score->other_compliances_required_self_assessment_rating;
 
                     $no_pay_dispute_self_assessment_rating = $score->no_pay_dispute_self_assessment_rating;
-                    $no_pay_dispute_remarks = $score->no_pay_dispute_remarks;
+                    $no_pay_dispute_remarks = $score->no_pay_dispute_actual_remarks;
 
                     $priority_tl_requirements = $score->linkedin_learning_compliance + $score->eod_reporting + $score->htl_compliance; // eod, htl, linkedin learning
 
