@@ -128,26 +128,39 @@
                         <td>{{ucwords($score->thetl->name)}}</td>
                         <td rowspan="2" style="text-align: center;"><span style="font-weight: bold; font-size: 18px;"> FINAL SCORE</span> </td>
                         <?php
-                        $totalkpis = $score->quality + $score->productivity;
-                        $score_remarks = $score->actual_remarks;
+                    $totalkpis = $score->quality + $score->productivity + $score->reliability;
+                    $score_remarks = $score->actual_remarks;
 
-                        $quality_remarks = $score->quality_actual_remarks;
-                        $productivity_remarks = $score->productivity_actual_remarks;
-                        $reliability_remarks = $score->reliability_actual_remarks;
-                        $partnership_remarks = $score->partnership_actual_remarks;
-                        $profit_remarks = $score->profit_actual_remarks;
-                        $no_client_escalations_remarks = $score->no_client_escalations_actual_remarks;
-                        $no_pay_dispute_remarks = $score->no_pay_dispute_actual_remarks;
-                        $linkedIn_learning_compliance_remarks = $score->linkedin_learning_compliance_actual_remarks;
-                        $eod_reporting_remarks = $score->eod_reporting_actual_remarks;
-                        $htl_compliance_remarks = $score->htl_compliance_actual_remarks;
-                        $other_compliances_required_remarks = $score->other_compliances_required_actual_remarks;
+                    $quality_remarks = $score->quality_actual_remarks;
+                    $quality_self_assessment_rating = $score->quality_self_assessment_rating;
+                    $productivity_remarks = $score->productivity_actual_remarks;
+                    $productivity_self_assessment_rating = $score->productivity_self_assessment_rating;
+                    $reliability_remarks = $score->reliability_actual_remarks;
+                    $reliability_self_assessment_rating = $score->reliability_self_assessment_rating;
+                    $partnership_remarks = $score->partnership_actual_remarks;
+                    $partnership_self_assessment_rating = $score->partnership_self_assessment_rating;
+                    $profit_remarks = $score->profit_actual_remarks;
+                    $profit_self_assessment_rating = $score->profit_self_assessment_rating;
+                    $no_client_escalations_remarks = $score->no_client_escalations_actual_remarks;
+                    $no_client_escalations_self_assessment_rating = $score->no_client_escalations_self_assessment_rating;
+                    $attrition_remarks = $score->attrition_actual_remarks;
+                    $attrition_self_assessment_rating = $score->attrition_self_assessment_rating;
+                    $no_pay_dispute_remarks = $score->no_pay_dispute_actual_remarks;
+                    $no_pay_dispute_self_assessment_rating = $score->no_pay_dispute_self_assessment_rating;
+                    $linkedIn_learning_compliance_remarks = $score->linkedin_learning_compliance_actual_remarks;
+                    $linkedIn_learning_compliance_self_assessment_rating = $score->linkedin_learning_compliance_self_assessment_rating;
+                    $eod_reporting_remarks = $score->eod_reporting_actual_remarks;
+                    $eod_reporting_self_assessment_rating = $score->eod_reporting_self_assessment_rating;
+                    $htl_compliance_remarks = $score->htl_compliance_actual_remarks;
+                    $htl_compliance_self_assessment_rating = $score->htl_compliance_self_assessment_rating;
+                    $other_compliances_required_remarks = $score->other_compliances_required_actual_remarks;
+                    $other_compliances_required_self_assessment_rating = $score->other_compliances_required_self_assessment_rating;
 
-                        $priority_tl_requirements = $score->linkedin_learning_compliance + $score->eod_reporting + $score->htl_compliance; // eod, htl, linkedin learning
+                    $priority_tl_requirements = $score->linkedin_learning_compliance + $score->eod_reporting + $score->htl_compliance; // eod, htl, linkedin learning
 
-                        $totaldeliverables = $score->no_client_escalations + $score->no_pay_dispute + $score->other_compliances_required + $score->reliability + $priority_tl_requirements + $score->partnership;
-                        // $final_reliablityscore = getTlReliabilityScore($score->reliability);
-                        $final_score = $totalkpis + $totaldeliverables;
+                    $totaldeliverables = $score->no_client_escalations + $score->no_pay_dispute + $score->other_compliances_required + $priority_tl_requirements + $score->partnership + $score->attrition;
+                    // $final_reliablityscore = getTlReliabilityScore($score->reliability);
+                    $final_score = $totalkpis + $totaldeliverables;
                         ?>
                         <td rowspan="2" style="text-align: center;"><span style="font-weight: bold; font-size: 22px"> {{$final_score}}%</span></td>
                         <!-- <td rowspan="2" style="text-align: center;"><span style="font-weight: bold; font-size: 22px"> {{$score->final_score}}%</span></td> -->
@@ -198,128 +211,158 @@
                         <td>SCORE</td>
                     </tr>
                     <tr>
-                        <!--start 1st column-->
-                        <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">Performance</td>
-                        <td class="ttxt-center">Quality</td>
-                        <td class="ttxt-center">LOB Quality Performance Score</td>
-                        <td class="ttxt-center">20.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">Straight Percentage Calculation</td>
-                        <td class="ttxt-center lbl-bold">20.00%</td>
-                        <td class="ttxt-center">{{$quality_remarks}}</td>
-                        <!--end 1st column done-->
+                    <!--start 1st column-->
+                    <td rowspan="3" style="width: 200px" class="lbl-bold ttxt-center">Performance</td>
+                    <td class="ttxt-center">Quality</td>
+                    <td class="ttxt-center">LOB Quality Performance Score</td>
+                    <td class="ttxt-center">20.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span style="font-weight: 500">20%</span> -  95% above Quality average<br>
+                        <span style="font-weight: 500">15%</span> -  90% to 94.99% above Quality average<br>
+                        <span style="font-weight: 500">10%</span> -  85% to 89.99% above Quality average<br>
+                        <span style="font-weight: 500">5%</span> -  80% to 84.99% above Quality average<br>
+                        <span style="font-weight: 500">0%</span>  -  79.99% below Quality average</span>
+                    </td>
+                    <td class="ttxt-center">{{$quality_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$quality_remarks}}</td>
+                    <!--end 1st column done-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->productivity}}%</td>
-                        <td rowspan="2" class="ttxt-center lbl-bold">{{$totalkpis}}%</td>
-                    </tr>
-                    <tr>
-                        <!--start 2nd column-->
-                        <td class="ttxt-center">Productivity</td>
-                        <td class="ttxt-center">Overall Team Productivity</td>
-                        <td class="ttxt-center">20.00%</td>
-                        <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td>
-                        <td class="ttxt-center lbl-bold">20.00%</td>
-                        <td class="ttxt-center">{{$productivity_remarks}}</td>
-                        <!--end 2nd column-->
+                    <td class="ttxt-center lbl-bold">{{$score->quality}}%</td>
+                    <td rowspan="3" class="ttxt-center lbl-bold">{{$totalkpis}}%</td>
+                </tr>
+                <tr>
+                    <!--start 2nd column-->
+                    <td class="ttxt-center">Productivity</td>
+                    <td class="ttxt-center">Overall Team Productivity</td>
+                    <td class="ttxt-center">15.00%</td>
+                    <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td>
+                    <td class="ttxt-center">{{$productivity_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$productivity_remarks}}</td>
+                    <!--end 2nd column-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->quality}}%</td>
-                    </tr>
+                    <td class="ttxt-center lbl-bold">{{$score->productivity}}%</td>
+                </tr>
 
-                    <tr>
-                        <!--start 3rd column-->
-                        <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">Profit</td>
-                        <td class="ttxt-center">Reliability</td>
-                        <td class="ttxt-center">Personal Attendance</td>
-                        <td class="ttxt-center">10.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span style="font-weight: 500">10.00%</span> -  95% Reliability <br>
-                            <span style="font-weight: 500">8%</span> -  90% Reliability <br>
-                            <span style="font-weight: 500">5%</span> -  85% to 89% Reliability <br>
-                            <span style="font-weight: 500">2%</span> -  80% to 84% Reliability <br>
-                            <span style="font-weight: 500">0%</span>  -  < 80% Reliability </span>
-                        </td>
-                        <td class="ttxt-center lbl-bold">10.00%</td>
-                        <td class="ttxt-center">{{$reliability_remarks}}</td>
-                        <!--end 3rd column-->
+                <tr>
+                    <!--start 3rd column-->
+                    <td class="ttxt-center">Reliability</td>
+                    <td class="ttxt-center">Personal Attendance</td>
+                    <td class="ttxt-center">10.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span style="font-weight: 500">10.00%</span> -  95% above <br>
+                        <span style="font-weight: 500">7%</span> -  90% to 94.99% <br>
+                        <span style="font-weight: 500">5%</span> -  85% to 89.99% <br>
+                        <span style="font-weight: 500">0%</span>  -  84.99% below </span>
+                    </td>
+                    <td class="ttxt-center">{{$reliability_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$reliability_remarks}}</td>
+                    <!--end 3rd column-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->reliability}}%</td>
-                        <td rowspan="6" class="ttxt-center lbl-bold">{{$totaldeliverables}}%</td>
-                    </tr>
-                    <tr>
-                        <!--start 4th column-->
-                        <td class="ttxt-center">Escalation</td>
-                        <td class="ttxt-center">No client escalation</td>
-                        <td class="ttxt-center">5.00%</td>
-                        <td style="text-align: center;  width: 350px;  font-style: italic">All or nothing</td>
-                        <td class="ttxt-center lbl-bold">5.00%</td>
-                        <td class="ttxt-center">{{$no_client_escalations_remarks}}</td>
-                        <!--end 4th column-->
+                    <td class="ttxt-center lbl-bold">{{$score->reliability}}%</td>
+                </tr>
+                <tr>
+                    <!--start 4th column-->
+                    <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">Profit</td>
+                    <td class="ttxt-center">Escalation</td>
+                    <td class="ttxt-center">No client escalation</td>
+                    <td class="ttxt-center">15.00%</td>
+                    <td style="text-align: center;  width: 350px;  font-style: italic">
+                        <span style="font-weight: 500">0%</span> - With monetary impact <br>
+                        <span style="font-weight: 500">7.50%</span> - No monetary impact <br>
+                        <span style="font-weight: 500">15%</span> - No escalation </span>
+                    </td>
+                    <td class="ttxt-center">{{$no_client_escalations_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$no_client_escalations_remarks}}</td>
+                    <!--end 4th column-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->no_pay_dispute}}%</td>
-                    </tr>
-                    <tr>
-                        <!--start 5th column-->
-                        <td style="width: 200px" class="lbl-bold ttxt-center">People</td>
-                        <td class="ttxt-center">Payroll</td>
-                        <td class="ttxt-center">Pay Dispute</td>
-                        <td class="ttxt-center">5.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td>
-                        <td class="ttxt-center lbl-bold">5.00%</td>
-                        <td class="ttxt-center">{{$no_pay_dispute_remarks}}</td>
-                        <!--end 5th column-->
+                    <td class="ttxt-center lbl-bold">{{$score->no_client_escalations}}%</td>
+                    <td rowspan="6" class="ttxt-center lbl-bold">{{$totaldeliverables}}%</td>
+                </tr>
+                <tr>
+                    <!--start 4th column-->
+                    <td class="ttxt-center">Attrition</td>
+                    <td class="ttxt-center">Not more than 2% monthly attrition</td>
+                    <td class="ttxt-center">10.00%</td>
+                    <td style="text-align: center;  width: 350px;  font-style: italic">All or nothing</td>
+                    <td class="ttxt-center">{{$attrition_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$attrition_remarks}}</td>
+                    <!--end 4th column-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->linkedin_learning_compliance}}%</td>
+                    <td class="ttxt-center lbl-bold">{{$score->attrition}}%</td>
+                </tr>
+                <tr>
+                    <!--start 5th column-->
+                    <td style="width: 200px" class="lbl-bold ttxt-center">People</td>
+                    <td class="ttxt-center">Leadership survey</td>
+                    <td class="ttxt-center">Survey score</td>
+                    <td class="ttxt-center">5.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span style="font-weight: 500">3.6 above</span> -  5% <br>
+                        <span style="font-weight: 500">3.4</span> -  3.6% <br>
+                        <span style="font-weight: 500">3.2</span> <br>
+                        <span style="font-weight: 500">Below</span>  -  3.0% </span>
+                    </td>
+                    <td class="ttxt-center">{{$no_pay_dispute_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$no_pay_dispute_remarks}}</td>
+                    <!--end 5th column-->
 
-                    </tr>
-                    <tr>
-                        <!--start 5th column-->
-                        <td style="width: 200px" class="lbl-bold ttxt-center">Partnership</td>
-                        <td class="ttxt-center">Client Partnership</td>
-                        <td class="ttxt-center">Weekly Bonuses Review decks submitted to the Clients.</td>
-                        <td class="ttxt-center">5.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span>All or nothing</span>
-                        </td>
-                        <td class="ttxt-center lbl-bold">5.00%</td>
-                        <td class="ttxt-center">{{$partnership_remarks}}</td>
-                        <!--end 5th column-->
+                    <td class="ttxt-center lbl-bold">{{$score->no_pay_dispute}}%</td>
 
-                        <td class="ttxt-center lbl-bold">{{$score->eod_reporting}}%</td>
-                    </tr>
-                    <tr>
-                        <!--start 5th column-->
-                        <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">Priority</td>
-                        <td class="ttxt-center">TL Requirements</td>
-                        <td class="ttxt-center">HTL, EOD and linkedIn Learning.</td>
-                        <td class="ttxt-center">15.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span style="font-weight: 500">5%</span> - HTL <br>
-                            <span style="font-weight: 500">5%</span> - EOD <br>
-                            <span style="font-weight: 500">5%</span> - LinkedIn Learning <br>
-                        </td>
-                        <td class="ttxt-center lbl-bold">15.00%</td>
-                        <td class="ttxt-center">
-                            <span>{{$htl_compliance_remarks}}</span><br>
-                            <span>{{$eod_reporting_remarks}}</span><br>
-                            <span>{{$linkedIn_learning_compliance_remarks}}</span>
-                        </td>
-                        <!--end 5th column-->
+                </tr>
+                <tr>
+                    <!--start 5th column-->
+                    <td style="width: 200px" class="lbl-bold ttxt-center">Partnership</td>
+                    <td class="ttxt-center">Engagement</td>
+                    <td class="ttxt-center">Team's participation</td>
+                    <td class="ttxt-center">5.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span>There should be a participation from your team member.</span>
+                    </td>
+                    <td class="ttxt-center">{{$partnership_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$partnership_remarks}}</td>
+                    <!--end 5th column-->
 
-                        <td class="ttxt-center lbl-bold">{{$priority_tl_requirements}}%</td>
-                    </tr>
-                    <tr>
-                        <!--start 5th column-->
-                        <td class="ttxt-center">Special Projects</td>
-                        <td class="ttxt-center">Other TL Deliverables</td>
-                        <td class="ttxt-center">20.00%</td>
-                        <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span style="font-weight: 500"></span> Weights equally divided to the number of monthly tasks. <br>
-                        </td>
-                        <td class="ttxt-center lbl-bold">20.00%</td>
-                        <td class="ttxt-center">{{$other_compliances_required_remarks}}</td>
-                        <!--end 5th column-->
+                    <td class="ttxt-center lbl-bold">{{$score->partnership}}%</td>
+                </tr>
+                <tr>
+                    <!--start 5th column-->
+                    <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">Priority</td>
+                    <td class="ttxt-center">TL Requirements</td>
+                    <td class="ttxt-center">HTL, EOD and linkedIn Learning.</td>
+                    <td class="ttxt-center">15.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span style="font-weight: 500">5%</span> - HTL <br>
+                        <span style="font-weight: 500">5%</span> - EOD <br>
+                        <span style="font-weight: 500">5%</span> - LinkedIn Learning <br>
+                    </td>
+                    <td class="ttxt-center">
+                        <span>{{$htl_compliance_self_assessment_rating}}</span><br>
+                        <span>{{$eod_reporting_self_assessment_rating}}</span><br>
+                        <span>{{$linkedIn_learning_compliance_self_assessment_rating}}</span>
+                    </td>
+                    <td class="ttxt-center">
+                        <span>{{$htl_compliance_remarks}}</span><br>
+                        <span>{{$eod_reporting_remarks}}</span><br>
+                        <span>{{$linkedIn_learning_compliance_remarks}}</span>
+                    </td>
+                    <!--end 5th column-->
 
-                        <td class="ttxt-center lbl-bold">{{$score->other_compliances_required}}%</td>
-                    </tr>
+                    <td class="ttxt-center lbl-bold">{{$priority_tl_requirements}}%</td>
+                </tr>
+                <tr>
+                    <!--start 5th column-->
+                    <td class="ttxt-center">Special Projects</td>
+                    <td class="ttxt-center">Other TL Deliverables</td>
+                    <td class="ttxt-center">5.00%</td>
+                    <td style="text-align: center; width: 350px;  font-style: italic">
+                        <span style="font-weight: 500"></span> Weights equally divided to the number of monthly tasks. <br>
+                    </td>
+                    <td class="ttxt-center">{{$other_compliances_required_self_assessment_rating}}</td>
+                    <td class="ttxt-center">{{$other_compliances_required_remarks}}</td>
+                    <!--end 5th column-->
+
+                    <td class="ttxt-center lbl-bold">{{$score->other_compliances_required}}%</td>
+                </tr>
 
 <!--                     <tr>
 

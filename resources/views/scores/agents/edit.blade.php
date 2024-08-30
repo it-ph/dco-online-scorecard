@@ -107,13 +107,17 @@ $dt1 = carbon::now();
                 <div class="col-md-12">
                     <table class="display nowrap table table-bordered dataTable">
                         <tr style="background: #026B4D; color: white">
+                                <td>Assessment Rating</td>
                                 <td>Remarks</td>
                                 <td>Metrics</td>
                                 <td>Actual Score</td>
                                 <td>Weightage</td>
                         </tr>
                         <tr>
-                            <td><input id="quality_remarks" name="quality_remarks" value="{{$score->quality_remarks}}" type="text"  class="form-control"></td>
+                            <td>
+                                <input style="width: 200px;" id="quality_self_assessment_rating" name="quality_self_assessment_rating" value="{{$score->quality_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
+                            <td ><input id="quality_remarks" name="quality_remarks" value="{{$score->quality_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> QUALITY (OVER-ALL) <small>@if($quality) {{$quality->value}} @else {{ 0 }} @endif%</small></span>   </td>
                             <td><input id="actual_quality" required name="actual_quality" value="{{$score->actual_quality}}" type="text" class="form-control" placeholder="" onkeyup="sumTotalScore()"></td>
                             <td>
@@ -127,6 +131,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="productivity_self_assessment_rating" name="productivity_self_assessment_rating" value="{{$score->productivity_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="productivity_remarks" name="productivity_remarks" value="{{$score->productivity_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> PRODUCTIVITY <small>@if($productivity) {{$productivity->value}} @else {{ 0 }} @endif%</small></span>   </td>
                             <td><input id="actual_productivity" required name="actual_productivity" value="{{$score->actual_productivity}}" type="text" class="form-control" placeholder="%" onkeyup="sumTotalScore()"></td>
@@ -142,6 +149,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="reliability_self_assessment_rating" name="reliability_self_assessment_rating" value="{{$score->reliability_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="reliability_remarks" name="reliability_remarks" value="{{$score->reliability_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> RELIABILITY <small>@if($reliability) {{$reliability->value}} @else {{ 0 }} @endif%</small><br>
                                     <small> (Absenteeism, Tardiness, Overbreak, Undertime)</small></span>   </td>
@@ -158,6 +168,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="profit_self_assessment_rating" name="profit_self_assessment_rating" value="{{$score->profit_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="profit_remarks" name="profit_remarks" value="{{$score->profit_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> PROFIT <small>@if($profit) {{$profit->value}} @else {{ 0 }} @endif%</small><br>
                                     <small></small></span>   </td>
@@ -174,6 +187,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="engagement_self_assessment_rating" name="engagement_self_assessment_rating" value="{{$score->engagement_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="engagement_remarks" name="engagement_remarks" value="{{$score->engagement_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> ENGAGEMENT <small>@if($engagement) {{$engagement->value}} @else {{ 0 }} @endif%</small><br>
                                     <small></small></span>   </td>
@@ -190,6 +206,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="behavior_self_assessment_rating" name="behavior_self_assessment_rating" value="{{$score->behavior_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="behavior_remarks" name="behavior_remarks" value="{{$score->behavior_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> BEHAVIOR <small>@if($behavior) {{$behavior->value}} @else {{ 0 }} @endif%</small><br>
                                     <small></small></span>   </td>
@@ -206,6 +225,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="partnership_self_assessment_rating" name="partnership_self_assessment_rating" value="{{$score->partnership_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="partnership_remarks" name="partnership_remarks" value="{{$score->partnership_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> PARTNERSHIP <small>@if($partnership) {{$partnership->value}} @else {{ 0 }} @endif%</small><br>
                                     <small></small></span>   </td>
@@ -222,6 +244,9 @@ $dt1 = carbon::now();
                         </tr>
 
                         <tr>
+                            <td>
+                                <input style="width: 200px;" id="priority_self_assessment_rating" name="priority_self_assessment_rating" value="{{$score->priority_self_assessment_rating}}" type="text" class="form-control">
+                            </td>
                             <td><input id="priority_remarks" name="priority_remarks" value="{{$score->priority_remarks}}" type="text"  class="form-control"></td>
                             <td><span style="font-weight: bold"> PRIORITY <small>@if($priority) {{$priority->value}} @else {{ 0 }} @endif%</small><br>
                                     <small></small></span>   </td>
@@ -280,9 +305,9 @@ function sumTotalScore() {
         let productivity = (p / 100) * actual_productivity;
         let reliability = (r / 100) * actual_reliability;
         let profit = (pt / 10) * actual_profit;
-        let engagement = (e / 10) * actual_engagement;
+        let engagement = (e / 15) * actual_engagement;
         let behavior = (b / 10) * actual_behavior;
-        let partnership = (ps / 10) * actual_partnership;
+        let partnership = (ps / 5) * actual_partnership;
         let priority = (py / 10) * actual_priority;
 
         quality = isNaN(quality) ? 0 : quality;
@@ -291,7 +316,7 @@ function sumTotalScore() {
         profit = isNaN(profit) ? 0 : profit;
         engagement = isNaN(engagement) ? 0 : engagement;
         behavior = isNaN(behavior) ? 0 : behavior;
-        partnership = isNaN(partnership) ? 0 : partnership * 2;
+        partnership = isNaN(partnership) ? 0 : partnership;
         priority = isNaN(priority) ? 0 : priority;
 
         quality = quality > q ? q : quality;
