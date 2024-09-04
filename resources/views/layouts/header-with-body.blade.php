@@ -5,7 +5,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">DCO - Scorecard</p>
+            <p class="loader__label">VALPAK <br> DCO - Scorecard</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -31,7 +31,7 @@
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span style="font-size: 14px; font-weight: bold; color: white"> DCO SCORECARD 
+                        <span style="font-size: 12px; font-weight: bold; color: white"> VALPAK DCO SCORECARD 
                          <!-- dark Logo text -->
                          {{-- <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" /> --}}
                         <!-- Light Logo text -->    

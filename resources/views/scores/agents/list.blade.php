@@ -18,7 +18,7 @@ $dt1 = carbon::now();
 </style>
 @endsection
 @section('content')
-<h3><strong>AGENTS SCORECARD</strong></h3>
+<h3><strong>VALPAK AGENTS SCORECARD</strong></h3>
 
 <div class="row" id="filterByMonth" style="display: none">
     <div class="col-md-offset-8 col-md-4">

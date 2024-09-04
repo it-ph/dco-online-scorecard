@@ -170,9 +170,9 @@
                             <td>
                                 <div style="border: 1px solid #D9D9D9; border-radius:4px; padding: 5px;">
                                     <input id="pt" value="@if($profit) {{$profit->value}} @else {{ 0 }} @endif" type="hidden" class="form-control">
-                                    {{-- <input id="profit" required name="profit" value="{{$score->profit}}" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"> --}}
-                                    <span style="font-size: 16px; text-align: center;" id="profit">{{$score->profit}} </span>
-                                    <input type="hidden" name="profit" id="pt_val" value="{{$score->profit}}">
+                                    {{-- <input id="profit" required name="profit" value="0" onkeyup="sumTotalScore()" type="text" class="form-control" placeholder="%"> --}}
+                                    <span style="font-size: 16px; text-align: center;" id="profit">0.00 </span>
+                                    <input type="hidden" name="profit" id="pt_val" value="0.00">
                                 </div>
                                 </div>
                             </td>

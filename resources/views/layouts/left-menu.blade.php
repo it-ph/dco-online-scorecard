@@ -23,7 +23,7 @@
                                 Agents
                             </a>
                         </li>
-                        <li><a class=" waves-effect waves-dark  @if (\Request::is('scores/tl')) active @endif" href="{{url('scores/tl')}}">Team Leaders </a></li>
+                    <!--     <li><a class=" waves-effect waves-dark  @if (\Request::is('scores/tl')) active @endif" href="{{url('scores/tl')}}">Team Leaders </a></li> -->
                     </ul>
                 </li>
                 @if(Auth::user()->role != 'CBA')

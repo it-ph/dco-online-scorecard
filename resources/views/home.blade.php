@@ -18,9 +18,9 @@
                 <ul class="nav nav-tabs customtab" role="tablist" id="reportsTab">
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#download-report" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Download</span></a> </li>
                     <li class="nav-item" id="agentUpload"> <a class="nav-link" data-toggle="tab" href="#upload-report" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-upload"></i></span> <span class="hidden-xs-down">Upload Agent Scores</span></a> </li>
-                    @if(Auth::user()->isAdmin() || Auth::user()->isManager())
+<!--                     @if(Auth::user()->isAdmin() || Auth::user()->isManager())
                     <li class="nav-item" id="tlUpload"> <a class="nav-link" data-toggle="tab" href="#upload-report1" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Upload Team Leader Scores</span></a> </li>
-                    @endif
+                    @endif -->
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -37,9 +37,9 @@
                                     <select data-toggle="tooltip" data-placement="left" title="Select Report" onchange="isTarget()" class="form-control" name="report" id="report">
                                         <option value="">--Please Select Report --</option>
                                         <option value="agent">Agents Scorecard Summary</option>
-                                        @if(Auth::user()->isAdmin() || Auth::user()->isManager())
+                                   <!--      @if(Auth::user()->isAdmin() || Auth::user()->isManager())
                                         <option value="tl">Team Leaders Scorecard Summary</option>
-                                        @endif
+                                        @endif -->
                                     </select>
                                 </div>
                             </div>
