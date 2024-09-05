@@ -186,7 +186,7 @@ $dt1 = carbon::now();
                                 <input id="no_pay_dispute_self_assessment_rating" name="no_pay_dispute_self_assessment_rating" value="{{$score->no_pay_dispute_self_assessment_rating}}" type="text" class="form-control">
                             </td>
                             <td colspan="2">
-                                <input id="no_pay_dispute_remarks" name="no_pay_dispute_remarks" value="{{$score->no_pay_dispute_remarks}}" type="text" class="form-control">
+                                <input id="no_pay_dispute_actual_remarks" name="no_pay_dispute_actual_remarks" value="{{$score->no_pay_dispute_actual_remarks}}" type="text" class="form-control">
                             </td>
                             <td style="text-align: justify; padding-left: 25px; line-height: 1.5; width: 350px;  font-style: italic"><span>
                                 <small>
