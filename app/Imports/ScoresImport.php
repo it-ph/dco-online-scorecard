@@ -53,13 +53,36 @@ class ScoresImport implements ToModel, WithHeadingRow, WithValidation,SkipsEmpty
         $month = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['month']))->format('M Y');
 
         $actual_productivity = $this->removePercent($row['productivity']);
+        $productivity_remarks = $this->removePercent($row['productivity_remarks']);
+        $productivity_self_assessment_rating = $this->removePercent($row['productivity_self_assessment_rating']);
+
         $actual_quality = $this->removePercent($row['quality']);
+        $quality_remarks = $this->removePercent($row['quality_remarks']);
+        $quality_self_assessment_rating = $this->removePercent($row['quality_self_assessment_rating']);
+
         $actual_reliability = $this->removePercent($row['reliability']);
+        $reliability_remarks = $this->removePercent($row['reliability_remarks']);
+        $reliability_self_assessment_rating = $this->removePercent($row['reliability_self_assessment_rating']);
+
         $actual_profit= $this->removePercent($row['profit']);
+        $profit_remarks = $this->removePercent($row['profit_remarks']);
+        $profit_self_assessment_rating = $this->removePercent($row['profit_self_assessment_rating']);
+
         $actual_engagement= $this->removePercent($row['engagement']);
+        $engagement_remarks = $this->removePercent($row['engagement_remarks']);
+        $engagement_self_assessment_rating = $this->removePercent($row['engagement_self_assessment_rating']);
+
         $actual_behavior= $this->removePercent($row['behavior']);
+        $behavior_remarks = $this->removePercent($row['behavior_remarks']);
+        $behavior_self_assessment_rating = $this->removePercent($row['behavior_self_assessment_rating']);
+
         $actual_partnership= $this->removePercent($row['partnership']);
+        $partnership_remarks = $this->removePercent($row['partnership_remarks']);
+        $partnership_self_assessment_rating = $this->removePercent($row['partnership_self_assessment_rating']);
+
         $actual_priority= $this->removePercent($row['priority']);
+        $priority_remarks = $this->removePercent($row['priority_remarks']);
+        $priority_self_assessment_rating = $this->removePercent($row['priority_self_assessment_rating']);
 
         $target = Setting::where('setting','target')->first();
         $p = Setting::where('setting','productivity')->first();
@@ -100,14 +123,38 @@ class ScoresImport implements ToModel, WithHeadingRow, WithValidation,SkipsEmpty
                 ],
                 [
                     'target' => $target->value,
+
                     'actual_productivity' => $actual_productivity,
+                    'productivity_remarks' => $productivity_remarks,
+                    'productivity_self_assessment_rating' => $productivity_self_assessment_rating,
+
                     'actual_quality' => $actual_quality,
+                    'quality_remarks' => $quality_remarks,
+                    'quality_self_assessment_rating' => $quality_self_assessment_rating,
+
                     'actual_reliability' => $actual_reliability,
+                    'reliability_remarks' => $reliability_remarks,
+                    'reliability_self_assessment_rating' => $reliability_self_assessment_rating,
+
                     'actual_profit' => $actual_profit,
+                    'profit_remarks' => $profit_remarks,
+                    'profit_self_assessment_rating' => $profit_self_assessment_rating,
+
                     'actual_engagement' => $actual_engagement,
+                    'engagement_remarks' => $engagement_remarks,
+                    'engagement_self_assessment_rating' => $engagement_self_assessment_rating,
+
                     'actual_behavior' => $actual_behavior,
+                    'behavior_remarks' => $behavior_remarks,
+                    'behavior_self_assessment_rating' => $behavior_self_assessment_rating,
+
                     'actual_partnership' => $actual_partnership,
+                    'partnership_remarks' => $partnership_remarks,
+                    'partnership_self_assessment_rating' => $partnership_self_assessment_rating,
+
                     'actual_priority' => $actual_priority,
+                    'priority_remarks' => $priority_remarks,
+                    'priority_self_assessment_rating' => $priority_self_assessment_rating,
 
                     'productivity' => $productivity,
                     'quality' => $quality,
@@ -116,7 +163,10 @@ class ScoresImport implements ToModel, WithHeadingRow, WithValidation,SkipsEmpty
                     'engagement' => $engagement,
                     'behavior' => $behavior,
                     'partnership' => $partnership,
+
                     'priority' => $priority,
+                    'priority_remarks' => $priority_remarks,
+                    'priority_self_assessment_rating' => $priority_self_assessment_rating,
 
                     'final_score' => $final_score,
                     'acknowledge_by_agent' => 0,
