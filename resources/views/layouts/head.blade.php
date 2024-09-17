@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon.ico')}}">
     <title>DCO - Scorecard</title>
     <link href="{{asset('css/dco-scorecard.css')}}" rel="stylesheet">
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/google.font.css')}}" >
     <link rel="stylesheet" href="{{asset('themes/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}">
     <link rel="stylesheet" href="{{asset('themes/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
