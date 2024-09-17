@@ -304,10 +304,10 @@ function sumTotalScore() {
         let quality = (q / 100) * actual_quality;
         let productivity = (p / 100) * actual_productivity;
         let reliability = (r / 100) * actual_reliability;
-        let profit = (pt / 10) * actual_profit;
-        let engagement = (e / 15) * actual_engagement;
+        let profit = (pt / 12.5) * actual_profit;
+        let engagement = (e / 5) * actual_engagement;
         let behavior = (b / 10) * actual_behavior;
-        let partnership = (ps / 5) * actual_partnership;
+        let partnership = (ps / 12.5) * actual_partnership;
         let priority = (py / 10) * actual_priority;
 
         quality = isNaN(quality) ? 0 : quality;

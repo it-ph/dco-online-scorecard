@@ -260,7 +260,7 @@
                         <!--start 1st column-->
                         <td rowspan="3" style="width: 200px" class="lbl-bold ttxt-center">Performance</td>
                         <td class="ttxt-center">Quality</td>
-                        <td class="ttxt-center">Individual Productivity Performance Output</td>
+                        <td class="ttxt-center">Individual Quality Performance Output</td>
                         <td class="ttxt-center">25.00%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span style="font-weight: 500">25%</span> -  95% above Quality average <br>
@@ -348,9 +348,9 @@
                         <td style="width: 200px" class="lbl-bold ttxt-center">Profit</td>
                         <td class="ttxt-center">Escalation</td>
                         <td class="ttxt-center">No client escalation</td>
-                        <td class="ttxt-center">10.00%</td>
+                        <td class="ttxt-center">12.50%</td>
                         <td style="text-align: center;  width: 350px;  font-style: italic">
-                            <span style="font-weight: 500">10%</span> - No client escalation<br>
+                            <span style="font-weight: 500">12.5%</span> - No client escalation<br>
                             <span style="font-weight: 500">0%</span> - With Escalation<br>
                         </td>
                         <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
@@ -372,7 +372,7 @@
                         <td rowspan="2" style="width: 200px" class="lbl-bold ttxt-center">People</td>
                         <td class="ttxt-center">Engagement Participation</td>
                         <td class="ttxt-center">Client, Tower and Personiv Engagement Attendance</td>
-                        <td class="ttxt-center">15.00%</td>
+                        <td class="ttxt-center">5.00%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td>
                         <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_engagement_remarks}}</td>
@@ -410,9 +410,9 @@
                     <tr>
                         <!--start 5th column-->
                         <td style="width: 200px" class="lbl-bold ttxt-center">Partnership</td>
-                        <td class="ttxt-center">Client Appreciation</td>
+                        <td class="ttxt-center">Client Appreciation and feedback</td>
                         <td class="ttxt-center">Client Feedback, mentions, kudos, and commendations</td>
-                        <td class="ttxt-center">5.00%</td>
+                        <td class="ttxt-center">12.50%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span>All or nothing</span>
                         </td>
