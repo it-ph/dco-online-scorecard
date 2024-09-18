@@ -353,7 +353,7 @@
                             <span style="font-weight: 500">10%</span> - No client escalation<br>
                             <span style="font-weight: 500">0%</span> - With Escalation<br>
                         </td>
-                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_profit_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_profit_remarks}}</td>
 <!--                         <td colspan=""></td>
                         <td class="ttxt-center">@if($profit) {{$profit->value}} @else {{ 0 }} @endif%</td>
@@ -374,7 +374,7 @@
                         <td class="ttxt-center">Client, Tower and Personiv Engagement Attendance</td>
                         <td class="ttxt-center">15.00%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">All or nothing</td>
-                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_engagement_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_engagement_remarks}}</td>
 <!--                         <td></td>
                         <td class="ttxt-center">@if($engagement) {{$engagement->value}} @else {{ 0 }} @endif%</td>
@@ -416,7 +416,7 @@
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span>All or nothing</span>
                         </td>
-                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_partnership_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_partnership_remarks}}</td>
 <!--                         <td></td>
                         <td class="ttxt-center">@if($partnership) {{$partnership->value}} @else {{ 0 }} @endif%</td>
@@ -441,7 +441,7 @@
                             <span style="font-weight: 500"></span> Surveys  <br>
                             <span style="font-weight: 500"></span> etc  <br>
                         </td>
-                        <td class="ttxt-center">{{$score_reliability_self_assessment_rating}}</td>
+                        <td class="ttxt-center">{{$score_priority_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_priority_remarks}}</td>
 <!--                         <td></td>
                         <td class="ttxt-center">@if($priority) {{$priority->value}} @else {{ 0 }} @endif%</td>
