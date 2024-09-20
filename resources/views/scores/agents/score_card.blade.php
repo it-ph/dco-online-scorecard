@@ -292,7 +292,7 @@
                         <td class="ttxt-center">Productivity</td>
                         <td class="ttxt-center">Individual Productivity Performance Output</td>
                         <td class="ttxt-center">12.50%</td>
-                        <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity Average</td>
+                        <td style="text-align: center;  width: 350px;  font-style: italic">100% Productivity</td>
                         <td class="ttxt-center">{{$score_productivity_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_productivity_remarks}}</td>
                         <!--end 2nd column-->
@@ -319,8 +319,8 @@
                         <td class="ttxt-center">Attendance Performance</td>
                         <td class="ttxt-center">12.50%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span style="font-weight: 500">12.50%</span> -  95% Reliability <br>
-                            <span style="font-weight: 500">8%</span> -  90% Reliability <br>
+                            <span style="font-weight: 500">12.5%</span> -  95% Reliability <br>
+                            <span style="font-weight: 500">8%</span> -  90% to 94% Reliability <br>
                             <span style="font-weight: 500">5%</span> -  85% to 89% Reliability <br>
                             <span style="font-weight: 500">2%</span> -  80% to 84% Reliability <br>
                             <span style="font-weight: 500">0%</span>  -  < 80% Reliability </span>
@@ -390,7 +390,7 @@
                         <td class="ttxt-center">10.00%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
                             <span style="font-weight: 500">10%</span> - No NTE or Coaching Log<br>
-                            <span style="font-weight: 500">5%</span> - Coaching Log <br>
+                            <span style="font-weight: 500">5%</span> - With Coaching Log <br>
                             <span style="font-weight: 500">0%</span> - With NTE received during within the month <br>
                         </td>
                         <td class="ttxt-center">{{$score_behavior_self_assessment_rating}}</td>
@@ -414,7 +414,11 @@
                         <td class="ttxt-center">Client Feedback, mentions, kudos, and commendations</td>
                         <td class="ttxt-center">12.50%</td>
                         <td style="text-align: center; width: 350px;  font-style: italic">
-                            <span>All or nothing</span>
+                            <span style="font-weight: 500"></span> Client Survey:  <br>
+                            <span style="font-weight: 500"></span> 3 - 12.5%  <br>
+                            <span style="font-weight: 500"></span> 2 - 10%  <br>
+                            <span style="font-weight: 500"></span> 1 - 5%  <br>
+                            <span style="font-weight: 500"></span> 0 - 0%  <br>
                         </td>
                         <td class="ttxt-center">{{$score_partnership_self_assessment_rating}}</td>
                         <td class="ttxt-center">{{$score_partnership_remarks}}</td>
@@ -439,6 +443,7 @@
                             <span style="font-weight: 500"></span> Rewards hub posting  <br>
                             <span style="font-weight: 500"></span> BCP Kit Testing  <br>
                             <span style="font-weight: 500"></span> Surveys  <br>
+                            <span style="font-weight: 500"></span> IQube Posting  <br>
                             <span style="font-weight: 500"></span> etc  <br>
                         </td>
                         <td class="ttxt-center">{{$score_priority_self_assessment_rating}}</td>
