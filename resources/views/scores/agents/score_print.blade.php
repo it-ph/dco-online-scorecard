@@ -210,11 +210,11 @@
                             <td class="ttxt-center">Individual Quality Performance Output</td>
                             <td class="ttxt-center">25.00%</td>
                             <td style="text-align: center; width: 350px;  font-style: italic">
-                                <span style="font-weight: 500">25%</span> -  95% above Quality average <br>
-                                <span style="font-weight: 500">20%</span> -  90% to 94.99% Quality average <br>
-                                <span style="font-weight: 500">15%</span> -  85% to 89.99% Quality average <br>
-                                <span style="font-weight: 500">5%</span> -  80% to 84.99% Quality average <br>
-                                <span style="font-weight: 500">0%</span>  -  79.99% below Quality average </span>
+                                <span style="font-weight: 500">25%</span> -  90% above Quality average <br>
+                                <span style="font-weight: 500">20%</span> -  85% to 89.99% Quality average <br>
+                                <span style="font-weight: 500">15%</span> -  80% to 84.99% Quality average <br>
+                                <span style="font-weight: 500">5%</span> -  75% to 79.99% Quality average <br>
+                                <span style="font-weight: 500">0%</span>  -  74.99% below Quality average </span>
                             </td>
                             <td class="ttxt-center">{{$score_quality_self_assessment_rating}}</td>
                             <td class="ttxt-center">{{$score_quality_remarks}}</td>
@@ -258,8 +258,8 @@
                             <td class="ttxt-center">Attendance Performance</td>
                             <td class="ttxt-center">12.50%</td>
                             <td style="text-align: center; width: 350px;  font-style: italic">
-                                <span style="font-weight: 500">12.50%</span> -  95% Reliability <br>
-                                <span style="font-weight: 500">8%</span> -  90% Reliability <br>
+                                <span style="font-weight: 500">12.5%</span> -  95% Reliability <br>
+                                <span style="font-weight: 500">8%</span> -  90% to 94% Reliability <br>
                                 <span style="font-weight: 500">5%</span> -  85% to 89% Reliability <br>
                                 <span style="font-weight: 500">2%</span> -  80% to 84% Reliability <br>
                                 <span style="font-weight: 500">0%</span>  -  < 80% Reliability </span>
@@ -329,10 +329,9 @@
                             <td class="ttxt-center">Personal Behavioral Attributes</td>
                             <td class="ttxt-center">10.00%</td>
                             <td style="text-align: center; width: 350px;  font-style: italic">
-                                <span style="font-weight: 500">NTEs</span><br>
-                                <span style="font-weight: 500">Not filing/checking timekeeping</span><br>
-                                <span style="font-weight: 500">TMS Tracker</span><br>
-                                <span style="font-weight: 500">etc</span>
+                                <span style="font-weight: 500">10%</span> - No NTE or Coaching Log<br>
+                                <span style="font-weight: 500">5%</span> - With Coaching Log <br>
+                                <span style="font-weight: 500">0%</span> - With NTE received during within the month <br>
                             </td>
                             <td class="ttxt-center">{{$score_behavior_self_assessment_rating}}</td>
                             <td class="ttxt-center">{{$score_behavior_remarks}}</td>
