@@ -355,7 +355,11 @@
                             <td class="ttxt-center">Client Feedback, mentions, kudos, and commendations</td>
                             <td class="ttxt-center">12.50%</td>
                             <td style="text-align: center; width: 350px;  font-style: italic">
-                                <span tyle="font-weight: 500">All or nothing</span>
+                                <span style="font-weight: 500"></span> Client Survey:  <br>
+                                <span style="font-weight: 500"></span> 3 - 12.5%  <br>
+                                <span style="font-weight: 500"></span> 2 - 10%  <br>
+                                <span style="font-weight: 500"></span> 1 - 5%  <br>
+                            <span style="font-weight: 500"></span> 0 - 0%  <br>
                             </td>
                             <td class="ttxt-center">{{$score_partnership_self_assessment_rating}}</td>
                             <td class="ttxt-center">{{$score_partnership_remarks}}</td>
