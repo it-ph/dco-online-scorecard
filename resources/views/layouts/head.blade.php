@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon.ico')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/eclerx/favicon.ico')}}">
     <title>DCO - Scorecard</title>
     <link href="{{asset('css/dco-scorecard.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/google.font.css')}}" >
