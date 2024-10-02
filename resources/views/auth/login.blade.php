@@ -69,7 +69,7 @@
                 <form>
                     @csrf
                     <a href="javascript:void(0)" class="text-center db"><img src="{{asset('images/eclerx/eClerx-logo.png')}}" class="logo" alt="Home" /><br/>
-                        <span class="dco-scorecard">  DCO SCORECARD</span>
+                        <span class="dco-scorecard">  VALPAK SCORECARD</span>
                     </a>
                     <!-- <div class="form-group m-t-40">
                         <div class="col-xs-12">
