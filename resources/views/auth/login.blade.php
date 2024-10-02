@@ -68,7 +68,7 @@
                 <!-- <form method="POST" action="{{ route('login') }}"> -->
                 <form>
                     @csrf
-                    <a href="javascript:void(0)" class="text-center db"><img src="{{asset('images/personiv/logo.png')}}" class="logo" alt="Home" /><br/>
+                    <a href="javascript:void(0)" class="text-center db"><img src="{{asset('images/eclerx/eClerx-logo.png')}}" class="logo" alt="Home" /><br/>
                         <span class="dco-scorecard">  DCO SCORECARD</span>
                     </a>
                     <!-- <div class="form-group m-t-40">
