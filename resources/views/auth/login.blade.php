@@ -43,7 +43,7 @@
     {{-- <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">DCO Scorecard</p>
+            <p class="loader__label">Valpak Scorecard</p>
         </div>
     </div> --}}
     <!-- ============================================================== -->
