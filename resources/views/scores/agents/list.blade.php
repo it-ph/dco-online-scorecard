@@ -104,6 +104,8 @@ $dt1 = carbon::now();
                                      <th>Parnership %</th>
                                      <th>Priority %</th>--}}
                                 <th>Final Score</th>
+                                <th>Productivity</th>
+                                <th>Quality</th>
                                 <th>Status</th>
                                 <th></th>
                                 @if(Auth::user()->isAdmin())
@@ -111,7 +113,8 @@ $dt1 = carbon::now();
                                 @endif
                             </tr>
                         </thead>
-                        <tbody> @foreach($scores as $score)
+                        <tbody>
+                             @foreach($scores as $score)
                             <tr>
                                 <td class="table-dark-border" style="width: 150px; text-align: center">
                                     {{-- @if($score->acknowledge_by_agent == "0")
@@ -181,6 +184,7 @@ $dt1 = carbon::now();
                                 <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->parnership}}</td>
                                 <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->priority}}</td> --}}
                                 <?php
+                                
                                 // $score_quality = $score->quality;
                                 
                                 $score_quality = getAgentQualityScore($score->actual_quality); //implement new quality performance range july 20, 2022
@@ -196,6 +200,8 @@ $dt1 = carbon::now();
                                 ?>
                                 {{-- <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->final_score}}%</td> --}}
                                 <td class="table-dark-border" style="width: 150px; text-align: center">{{ $final_score }}%</td>
+                                <td class="table-dark-border" style="width: 150px; text-align: center">{{ $score->productivity }}%</td>
+                                <td class="table-dark-border" style="width: 150px; text-align: center">{{ $score->quality }}%</td>
                                 @if($score->acknowledge > 0)
                                 <td class="table-dark-border" style="width: 150px; text-align: center">Acknowledge</td>
                                 @else
@@ -254,6 +260,12 @@ $dt1 = carbon::now();
     <!--col-md-12-->
 </div>
 <!--row-->
+
+<script>
+    function toggleMonthFilter() {
+        $("#filterByMonth").slideToggle();
+    }
+</script>
 
 @endsection
 
@@ -365,9 +377,5 @@ $dt1 = carbon::now();
         console.log(totalScore);
     }
 
-
-    function toggleMonthFilter() {
-        $("#filterByMonth").slideToggle();
-    }
 </script>
 @endsection

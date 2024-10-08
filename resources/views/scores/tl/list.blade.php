@@ -89,6 +89,8 @@ th{
                         <th>Productivity %</th>
                         <th>Reliability %</th> --}}
                         <th>Final Score</th>
+                        <th>Productivity</th>
+                        <th>Quality</th>
                         <th >Status</th>
                         <th ></th>
                         @if(Auth::user()->isAdmin()) 
@@ -124,6 +126,8 @@ th{
                     <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->productivity}}</td>
                     <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->reliability}}</td> --}}
                     <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->final_score}}%</td>
+                    <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->productivity}}%</td>
+                    <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->quality}}%</td>
                     @if($score->acknowledge > 0)
                     <td class="table-dark-border" style="width: 150px; text-align: center">Acknowledge</td>
                     @else
@@ -176,6 +180,13 @@ th{
         </div><!--card-->
     </div><!--col-md-12-->
 </div><!--row-->
+
+<script>
+    function toggleMonthFilter()
+    {
+        $("#filterByMonth").slideToggle();
+    }
+</script>
 
 @endsection
 
@@ -242,10 +253,5 @@ function sumTotalScore()
     console.log(totalScore);
 }
 
-
-function toggleMonthFilter()
-{
-    $("#filterByMonth").slideToggle();
-}
 </script>
 @endsection
