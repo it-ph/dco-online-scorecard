@@ -104,6 +104,8 @@ $dt1 = carbon::now();
                                      <th>Parnership %</th>
                                      <th>Priority %</th>--}}
                                 <th>Final Score</th>
+                                <th>Productivity</th>
+                                <th>Quality</th>
                                 <th>Status</th>
                                 <th></th>
                                 @if(Auth::user()->isAdmin())
