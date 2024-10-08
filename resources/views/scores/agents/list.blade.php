@@ -196,6 +196,8 @@ $dt1 = carbon::now();
                                 ?>
                                 {{-- <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->final_score}}%</td> --}}
                                 <td class="table-dark-border" style="width: 150px; text-align: center">{{ $final_score }}%</td>
+                                <td class="table-dark-border" style="width: 150px; text-align: center">{{ $score->productivity }}%</td>
+                                <td class="table-dark-border" style="width: 150px; text-align: center">{{ $score->quality }}%</td>
                                 @if($score->acknowledge > 0)
                                 <td class="table-dark-border" style="width: 150px; text-align: center">Acknowledge</td>
                                 @else
@@ -254,6 +256,12 @@ $dt1 = carbon::now();
     <!--col-md-12-->
 </div>
 <!--row-->
+
+<script>
+        function toggleMonthFilter() {
+        $("#filterByMonth").slideToggle();
+    }
+</script>
 
 @endsection
 
@@ -366,8 +374,6 @@ $dt1 = carbon::now();
     }
 
 
-    function toggleMonthFilter() {
-        $("#filterByMonth").slideToggle();
-    }
+
 </script>
 @endsection

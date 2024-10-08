@@ -122,7 +122,7 @@ th{
                     </td>
                     {{-- <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->quality}}</td>
                     <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->productivity}}</td>
-                    <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->reliability}}</td> --}}
+                    <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->quality}}</td> --}}
                     <td class="table-dark-border" style="width: 150px; text-align: center">{{$score->final_score}}%</td>
                     @if($score->acknowledge > 0)
                     <td class="table-dark-border" style="width: 150px; text-align: center">Acknowledge</td>
@@ -176,6 +176,13 @@ th{
         </div><!--card-->
     </div><!--col-md-12-->
 </div><!--row-->
+
+<script>
+    function toggleMonthFilter()
+{
+    $("#filterByMonth").slideToggle();
+}
+</script>
 
 @endsection
 
@@ -242,10 +249,5 @@ function sumTotalScore()
     console.log(totalScore);
 }
 
-
-function toggleMonthFilter()
-{
-    $("#filterByMonth").slideToggle();
-}
 </script>
 @endsection
