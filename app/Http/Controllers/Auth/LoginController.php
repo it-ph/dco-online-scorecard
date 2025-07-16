@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use Notification;
 use Illuminate\Http\Request;
+use Adldap\Auth\BindException;
+use Adldap\Laravel\Facades\Adldap;
 use App\Http\Controllers\Controller;
 use App\Notifications\TwoFactorCode;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Dcblogdev\MsGraph\Models\MsGraphToken;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -42,33 +46,105 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function username()
+    // public function username()
+    // {
+    //     return 'emp_id';
+    // }
+
+    public function login(Request $request)
     {
-        return 'emp_id';
-    }
+        // Validate email and password
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    protected function authenticated(Request $request, $user)
-    {
-        $user->generateTwoFactorCode();
+        $credentials = $request->only('email', 'password');
 
-        // Notification::send($user, new TwoFactorCode());
-        // Notification::route('mail', $request['email'])->notify(new TwoFactorCode($user->two_factor_code));
-    }
+        try {
+            // Search for user in LDAP
+            $ldapUser = Adldap::search()->where('mail', $credentials['email'])->first();
 
-    public function logout()
-    {
-        $is_logged_in = MsGraphToken::query()
-            ->where('user_id', Auth::user()->id)
-            ->delete();
+            if ($ldapUser) {
+                // Authenticate against LDAP
+                if (Adldap::auth()->attempt($ldapUser->getDn(), $credentials['password'])) {
+                    return $this->handleLocalUser($ldapUser, $credentials['password']);
+                }
 
-        if($is_logged_in)
-        {
-            Auth::logout();
-            Session()->flush();
-
-            return redirect('login');
+                return back()->withErrors(['email' => 'Invalid credentials. Please try again.'])->withInput();
+            }
+        } catch (BindException $e) {
+            // LDAP is down — fallback to local DB
+            return $this->fallbackToLocalAuth($credentials);
         }
+
+        return back()->withErrors(['email' => 'User not found in the directory. Please check your email and try again.'])->withInput();
     }
+
+    // Handle local user sync and login
+    private function handleLocalUser($ldapUser, $password)
+    {
+        $localUser = User::where('email', $ldapUser->getEmail())->first();
+
+        if (!$localUser) {
+            return back()->withErrors(['email' => 'Access denied. You are not authorized to use this system.']);
+        }
+
+        // Sync fullname if changed
+        $newFullname = $ldapUser->getCommonName();
+        if ($localUser->fullname !== $newFullname) {
+            $localUser->update(['name' => $newFullname]);
+        }
+
+        // Sync password if different and password sync is enabled
+        if (env('LDAP_PASSWORD_SYNC') && !Hash::check($password, $localUser->password)) {
+            $localUser->update(['password' => Hash::make($password)]);
+        }
+
+        // Log the user in
+        Auth::login($localUser);
+        return redirect()->intended('home');
+    }
+
+    // Fallback to local database authentication
+    private function fallbackToLocalAuth($credentials)
+    {
+        $localUser = User::where('email', $credentials['email'])->first();
+
+        if ($localUser && Hash::check($credentials['password'], $localUser->password)) {
+            Auth::login($localUser);
+            return redirect()->intended('home');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials or directory service unavailable. Please try again later.'])->withInput();
+    }
+
+
+
+
+
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     $user->generateTwoFactorCode();
+
+    //     // Notification::send($user, new TwoFactorCode());
+    //     // Notification::route('mail', $request['email'])->notify(new TwoFactorCode($user->two_factor_code));
+    // }
+
+    // public function logout()
+    // {
+    //     $is_logged_in = MsGraphToken::query()
+    //         ->where('user_id', Auth::user()->id)
+    //         ->delete();
+
+    //     if($is_logged_in)
+    //     {
+    //         Auth::logout();
+    //         Session()->flush();
+
+    //         return redirect('login');
+    //     }
+    // }
 
 
 }

@@ -17,11 +17,11 @@ Route::get('/', function () {
     return redirect()->guest('/login');
 });
 
+
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-
 
 Route::get('template', function () {
     return view('template');
@@ -33,7 +33,7 @@ Route::get('unauthorized', function () {
 
 //SSO
 Route::group(['middleware' => ['web', 'guest']], function(){
-    Route::get('login', 'Auth\AuthController@login')->name('login');
+    // Route::get('login', 'Auth\AuthController@login')->name('login');
     Route::get('connect', 'Auth\AuthController@connect')->name('connect');
 });
 
@@ -46,7 +46,7 @@ Route::POST('verify/send', 'Auth\TwoFactorController@send')->name('verify.send')
 Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 
 /* Authorized Users */
-Route::group(['middleware' => ['auth','verify.access','web'],],
+Route::group(['middleware' => ['auth','web'],],
 // Route::group(['middleware' => ['auth','twofactor','web'],],
     function ()
 {
