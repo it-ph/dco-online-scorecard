@@ -46,8 +46,8 @@ Route::POST('verify/send', 'Auth\TwoFactorController@send')->name('verify.send')
 Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 
 /* Authorized Users */
-Route::group(['middleware' => ['auth','verify.access','web'],],
 // Route::group(['middleware' => ['auth','twofactor','web'],],
+Route::group(['middleware' => ['auth','web'],],
     function ()
 {
 

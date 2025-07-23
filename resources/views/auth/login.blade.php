@@ -13,7 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('eclerx/e-Logo-97x97-1.png')}}">
-    <title>Valpak - Scorecard</title>
+    <title>DCO - Scorecard</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/dco-scorecard.css')}}" rel="stylesheet">
     <!-- page css -->
@@ -43,13 +43,13 @@
     {{-- <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Valpak Scorecard</p>
+            <p class="loader__label">DCO Scorecard</p>
         </div>
     </div> --}}
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    {{-- <section id="wrapper" class="login-register login-sidebar" style="background-image:url({{asset('images/login.jpg')}});"> --}}
+    {{-- <section id="wrapper" class="login-register login-sidebar" style="background-image:url({{asset('images/eclerx/eClerx-white.png')}});"> --}}
         <section id="wrapper" class="login-register login-sidebar">
             <ul class="bg-bubbles">
                 <li></li>
@@ -65,17 +65,16 @@
             </ul>
         <div class="login-box card">
             <div class="card-body">
-                <!-- <form method="POST" action="{{ route('login') }}"> -->
-                <form>
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <a href="javascript:void(0)" class="text-center db"><img src="{{asset('images/eclerx/eClerx-logo.png')}}" class="logo" alt="Home" /><br/>
-                        <span class="dco-scorecard">  VALPAK SCORECARD</span>
+                        <span class="dco-scorecard">  DCO SCORECARD</span>
                     </a>
-                    <!-- <div class="form-group m-t-40">
+                    <div class="form-group m-t-40">
                         <div class="col-xs-12">
-                            <input id="emp_id" type="text" placeholder="Employee ID" autofocus class="login-form-txt form-control @error('emp_id') is-invalid @enderror" name="emp_id" value="{{ old('emp_id') }}" required  autofocus>
+                            <input id="email" type="text" placeholder="Email Address" autofocus class="login-form-txt form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required  autofocus>
 
-                            @error('emp_id')
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -93,23 +92,28 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <div class="col-md-12">
                             <div class="checkbox checkbox-primary pull-left p-t-0">
-                                {{-- <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue"> --}}
+                                <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                {{-- <label for="checkbox-signup"> Remember me </label> --}}
+                                <label for="checkbox-signup"> Remember me </label>
                                 <label class="form-check-label" for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
                             </div>
                         </div>
-                            {{-- <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> </div> --}}
-                    </div> -->
-                    <div class="form-group m-t-10">
-
+                            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> </div>
+                    </div> --}}
+                    {{-- <div class="form-group m-t-10">
                         <div class="col-xs-12 text-center db">
                             <a href="{{route('connect')}}" class="btn btn-warning btn-md text-uppercase btn-rounded">Single Sign-On</a>
+                        </div>
+                    </div> --}}
+                    <div class="form-group m-t-10">
+                        <div class="col-xs-12 text-center db">
+                            {{-- <a href="{{route('connect')}}" class="btn btn-warning btn-md text-uppercase btn-rounded">Login</a> --}}
+                            <button class="btn btn-warning btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Login</button>
                         </div>
                     </div>
                 </form>
