@@ -66,7 +66,7 @@ class Kernel extends HttpKernel
         'adminOnly' => \App\Http\Middleware\AdminOnly::class,
         'twofactor'     => \App\Http\Middleware\TwoFactor::class,
         'verify.access' => \App\Http\Middleware\VerifyAccess::class,
-
+        'prevent.back.history'     => \App\Http\Middleware\PreventBackHistory::class,
     ];
 
     /**
